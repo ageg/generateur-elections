@@ -17,4 +17,4 @@ Toutes les dépendances sont dans le fichier requirements. Il suffit de les inst
 
 ## Exécution
 
-Exécutez promo62.py avec Python pour lancer le script pour la finissante. Je travaille à faire le script de l'AGEG.
+Exécutez promo62.py avec Python pour lancer le script pour la finissante. Le script à exécuter pour les élections de l'AGEG est ageg.py
