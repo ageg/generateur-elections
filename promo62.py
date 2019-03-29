@@ -73,7 +73,7 @@ for candidat in fc.values:
         poste = candidat[x]
         if isinstance(poste, str):
             nom = candidat[NOM_USUEL]
-            order = questions_map[poste].option_count()
+            order = questions_map[poste].answer_count()
             code = "A{numeral}".format(numeral=order+1)
             concentration = candidat[CONCENTRATION]
 
@@ -83,14 +83,16 @@ for candidat in fc.values:
 
             option = Option(value=nom, code=code, order=order, description=description, image=candidat[PHOTO])
             questions_map[poste].add_option(option)
+            questions_map[poste].add_answer(option)
 
 for poste in questions_map:
-    order = questions_map[poste].option_count()
+    order = questions_map[poste].answer_count()
     lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
         description="<p><strong>La chaise (Whatever)</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
         image = "/upload/surveys/893586/images/markus_1.jpgd2fe39c4-d929-477e-ae08-ca0ec8e8a9e7Original.jpg"
     )
     questions_map[poste].add_option(lachaise)
+    questions_map[poste].add_answer(lachaise)
 
 mylookup = TemplateLookup(directories=['.'], input_encoding="utf-8", output_encoding="utf-8")
 mytemplate = Template(filename='templates/promo62/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")

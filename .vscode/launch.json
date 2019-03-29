@@ -5,10 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Run",
+            "name": "Python: Run AGEG",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/main.py",
+            "program": "${workspaceFolder}/ageg.py",
+            "console": "integratedTerminal"
+        }, {
+            "name": "Python: Run Promo 62",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/promo62.py",
             "console": "integratedTerminal"
         }
     ]
