@@ -29,9 +29,9 @@ for option in options_admin:
 
 questions.append(question_admin)    
 mylookup = TemplateLookup(directories=['.'], input_encoding="utf-8", output_encoding="utf-8")
-mytemplate = Template(filename='templates/ageg/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
+mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
 
-survey = mytemplate.render(groups=groups,questions=questions,subquestions=sousquestions_admin)
+survey = mytemplate.render(groups=groups,questions=questions, subquestions=sousquestions_admin, withAttributes=False)
 
 survey_file = open("result/survey.lss", "w+b")
 survey_file.write(survey)

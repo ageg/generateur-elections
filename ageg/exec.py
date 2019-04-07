@@ -7,8 +7,16 @@ from models.question import Question
 
 SESSION = "A19"
 
+CONCENTRATION = 'Concentration'
+PROMOTION = 'Promotion'
+NOM_USUEL = 'Nom usuel'
+PHOTO = 'Photo'
+TEXTE_DESCRIPTIF = 'Texte descriptif'
+POSTE_VISE = 'Poste visé'
+
 postes = [
     "Présidence",
+    "Vice-Présidence aux Affaires Légales",
     "Vice-Présidence aux Affaires Internes",
     "Vice-Présidence aux Affaires Financières",
     "Vice-Présidence aux Affaires Pédagogiques",
@@ -21,6 +29,7 @@ postes = [
 
 abbreviations = {
     "Présidence": "PREZ",
+    "Vice-Présidence aux Affaires Légales": "VPAL",
     "Vice-Présidence aux Affaires Internes": "VPAI",
     "Vice-Présidence aux Affaires Financières": "VPAF",
     "Vice-Présidence aux Affaires Pédagogiques": "VPAP",
@@ -40,12 +49,21 @@ def generer_questions_exec(gid):
 
     fichier_exec = read_csv('example/executif.csv')
 
-    NOM_USUEL = fichier_exec.columns.get_loc('Nom usuel')
-    PHOTO = fichier_exec.columns.get_loc('Photo')
-    TEXTE_DESCRIPTIF = fichier_exec.columns.get_loc('Texte descriptif')
-    POSTE_VISE = fichier_exec.columns.get_loc('Poste visé')
-    CONCENTRATION = fichier_exec.columns.get_loc('Concentration')
-    PROMOTION = fichier_exec.columns.get_loc('Promotion')
+    colonnes = {
+        CONCENTRATION: -1,
+        PROMOTION: -1,
+        NOM_USUEL: -1,
+        PHOTO: -1,
+        TEXTE_DESCRIPTIF: -1,
+        POSTE_VISE: -1   
+    }
+
+    for col in colonnes.keys():
+        try:
+            colonnes[col] = fichier_exec.columns.get_loc(col)
+        except KeyError:
+            print(f"Colonne \"{col}\" manquante")
+            exit()
 
     for i in range(0, len(postes)):
         question_code = abbreviations[postes[i]] + SESSION
@@ -56,18 +74,18 @@ def generer_questions_exec(gid):
         questions_map[postes[i]] = question
 
     for candidat in fichier_exec.values:
-        poste = candidat[POSTE_VISE]
-        nom = candidat[NOM_USUEL]
+        poste = candidat[colonnes[POSTE_VISE]]
+        nom = candidat[colonnes[NOM_USUEL]]
         order = questions_map[poste].answer_count()
         code = "A{numeral}".format(numeral=order+1)
-        concentration = candidat[CONCENTRATION]
-        promotion = candidat[PROMOTION]
+        concentration = candidat[colonnes[CONCENTRATION]]
+        promotion = candidat[colonnes[PROMOTION]]
 
         description = "<p><strong>{name} ({concentration}, {promotion})</strong></p>".format(name=nom, concentration=concentration, promotion=promotion)
-        for line in candidat[TEXTE_DESCRIPTIF].split('\n'):
+        for line in candidat[colonnes[TEXTE_DESCRIPTIF]].split('\n'):
             description += "<p>{line}</p>\n".format(line=line)
 
-        option = Option(value=nom, code=code, order=order, description=description, image=candidat[PHOTO])
+        option = Option(value=nom, code=code, order=order, description=description, image=candidat[colonnes[PHOTO]])
         questions_map[poste].add_answer(option)
         questions_map[poste].add_option(option)
 

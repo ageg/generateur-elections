@@ -1,4 +1,5 @@
 from math import isnan
+from sys import exit
 
 from mako.template import Template
 from mako.lookup import TemplateLookup
@@ -34,20 +35,36 @@ postes = [
 
 fc = read_csv('example/Candidatures.csv')
 
-CONCENTRATION = fc.columns.get_loc('Concentration')
-NOM_USUEL = fc.columns.get_loc('Nom usuel')
-PHOTO = fc.columns.get_loc('Photo')
-TEXTE_DESCRIPTION = fc.columns.get_loc('Texte descriptif')
-POSTE_VISES = [
-    fc.columns.get_loc('Poste visé #1'),
-    fc.columns.get_loc('Poste visé #2'),
-    fc.columns.get_loc('Poste visé #3')
+CONCENTRATION = 'Concentration'
+NOM_USUEL = 'Nom usuel'
+PHOTO = 'Photo_URL'
+TEXTE_DESCRIPTIF = 'Texte descriptif'
+POSTES_VISES = [
+    'Poste visé #1',
+    'Poste visé #2',
+    'Poste visé #3'
 ]
+
+colonnes = {
+    CONCENTRATION: -1,
+    NOM_USUEL: -1,
+    PHOTO: -1,
+    TEXTE_DESCRIPTIF: -1,
+    POSTES_VISES[0]: -1,
+    POSTES_VISES[1]: -1,
+    POSTES_VISES[2]: -1
+}
+
+for col in colonnes.keys():
+    try:
+        colonnes[col] = fc.columns.get_loc(col)
+    except KeyError:
+        print(f"Colonne \"{col}\" manquante")
+        exit()
 
 groups = []
 questions = []
 questions_map = {}
-
 
 def zeroPad(value):
     return "0" + str(value) if value < 10 else str(value)
@@ -69,19 +86,19 @@ for i in range(0, len(postes)):
     questions_map[postes[i]] = question
 
 for candidat in fc.values:
-    for x in POSTE_VISES:
-        poste = candidat[x]
+    for POSTE in POSTES_VISES:
+        poste = candidat[colonnes[POSTE]]
         if isinstance(poste, str):
-            nom = candidat[NOM_USUEL]
+            nom = candidat[colonnes[NOM_USUEL]]
             order = questions_map[poste].answer_count()
             code = "A{numeral}".format(numeral=order+1)
-            concentration = candidat[CONCENTRATION]
+            concentration = candidat[colonnes[CONCENTRATION]]
 
             description = "<p><strong>{name} ({concentration})</strong></p>".format(name=nom, concentration=concentration)
-            for line in candidat[9].split('\n'):
+            for line in candidat[colonnes[TEXTE_DESCRIPTIF]].split('\n'):
                 description += "<p>{line}</p>\n".format(line=line)
 
-            option = Option(value=nom, code=code, order=order, description=description, image=candidat[PHOTO])
+            option = Option(value=nom, code=code, order=order, description=description, image=candidat[colonnes[PHOTO]])
             questions_map[poste].add_option(option)
             questions_map[poste].add_answer(option)
 
@@ -95,9 +112,9 @@ for poste in questions_map:
     questions_map[poste].add_answer(lachaise)
 
 mylookup = TemplateLookup(directories=['.'], input_encoding="utf-8", output_encoding="utf-8")
-mytemplate = Template(filename='templates/promo62/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
+mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
 
-survey = mytemplate.render(groups=groups,questions=questions)
+survey = mytemplate.render(groups=groups,questions=questions, subquestions=None, withAttributes=True)
 
 survey_file = open("result/survey.lss", "w+b")
 survey_file.write(survey)
