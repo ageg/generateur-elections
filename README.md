@@ -2,6 +2,24 @@
 
 Ce programme sert à générer des questionnaires pour Limesurvey (format .lss) pour les élections de l'AGEG. Ceci ce fait en lui passant en entrée un classeur avec les candidatures.
 
+## Rouler avec Docker
+Savoir plus sur Docker : https://www.docker.com/why-docker
+### Si vous faites les élections de l'AGEG : 
+Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `admin.csv` et `executif.csv`. Ensuite vous pouvez faire : 
+
+```
+    docker build -t ageg-election .
+    docker run -i ageg-election /bin/bash -c 'cat result/ageg-survey.lss' > $PWD/result/ageg-survey.lss
+```
+
+### Si vous faites les élections de promo : 
+Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `Candidatures.csv` Ensuite vous pouvez faire : 
+
+```
+    docker build -t ageg-election .
+    docker run -i ageg-election /bin/bash -c 'cat result/finissante-survey.lss' > $PWD/result/finissante-survey.lss
+```
+
 ## Setup environnement
 
 Le script a été développé avec Python 3.6. Exécutez la commande suivante pour créer un environnement virtuel.
