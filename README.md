@@ -63,9 +63,9 @@ Nom Usuel | Concentration | Poste Visé #1 | Poste Visé #2 | Poste Visé #3 | P
 
 ## Exécution
 
-Exécutez le fichier *promo62.py* avec Python.
+Exécutez le fichier *finissante.py* avec Python.
 
-```python promo62.py```
+```python finissante.py```
 
 # Limesurvey (Importer)
 
