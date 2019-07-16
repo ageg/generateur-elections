@@ -58,7 +58,7 @@ Exécutez le fichier *ageg.py* avec Python.
 
 Vous devez mettre un fichier CSV qui doit se nommer *example/Candidatures.csv* et comporter les colonnes suivantes.
 
-Nom Usuel | Concentration | Poste Visé #1 | Poste Visé #2 | Poste Visé #3 | Photo | Texte descriptif
+Nom Usuel | Concentration | Poste visé #1 | Poste visé #2 | Poste visé #3 | Photo_URL | Texte descriptif
 ----------|---------------|---------------|---------------|---------------|-------|-----------------
 
 ## Exécution
