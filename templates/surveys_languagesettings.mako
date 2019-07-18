@@ -47,7 +47,7 @@ Directeurs d'élections, session d'hiver 2019</strong>]]></surveyls_welcometext>
     <surveyls_endtext><![CDATA[Des postes resteront vacants suite à cette élection régulière. Nous vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.<br />
 <br />
 Merci d'avoir participé et bonne journée]]></surveyls_endtext>
-    <surveyls_url><![CDATA[www.ageg.ca]]></surveyls_url>
+    <surveyls_url><![CDATA[https://www.ageg.ca]]></surveyls_url>
     <surveyls_urldescription/>
     <surveyls_email_invite_subj><![CDATA[Élections de l'AGEG - Automne 2019]]></surveyls_email_invite_subj>
     <surveyls_email_invite><![CDATA[<html>
@@ -57,7 +57,7 @@ Merci d'avoir participé et bonne journée]]></surveyls_endtext>
 <body>
 <p>Bon matin {FIRSTNAME},<br />
 <br />
-Vous êtes par la présente invité(e) à inscrire votre votre pour le comité exécutif et le conseil d'administration de l'AGEG.</p>
+Vous êtes par la présente invité(e) à inscrire votre vote pour le comité exécutif et le conseil d'administration de l'AGEG.</p>
 
 <p>Pour participer, veuillez cliquer sur le lien ci-dessous:<br />
 {SURVEYURL}<br />
