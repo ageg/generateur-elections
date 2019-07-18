@@ -1,0 +1,8 @@
+fichiers:
+  executif: exec.csv
+options:
+  avec_admin_annuels: false
+informations:
+  admin:
+    nom: Tommy Savaria
+    email: elections@ageg.ca
