@@ -13,8 +13,6 @@ from models.option import Option
 from models.question import Question
 
 if os.path.isfile('example/Candidatures.csv'):
-    print("JOB START ! Starting generation for finissante !")
-
     postes = [
         "Présidence",
         "Vice-Présidence",
@@ -123,5 +121,3 @@ if os.path.isfile('example/Candidatures.csv'):
     survey_file = open("result/finissante-survey.lss", "w+b")
     survey_file.write(survey)
     survey_file.close()
-
-    print("JOB DONE ! You can find your result in result/finissante-survey.lss")
