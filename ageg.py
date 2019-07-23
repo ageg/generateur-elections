@@ -15,7 +15,7 @@ from models.question import Question
 
 if os.path.isfile('example/admin.csv') and os.path.isfile('example/executif.csv'):
     print("JOB START ! Starting generation for ageg !")
-    groupe_exec = Group(id=0, name="Comité exécutif", description="Pour cette section, seulement une personne peut-être élue par poste. Veuillez placer les candidatures en ordre de préférence, du haut vers le bas.")
+    groupe_exec = Group(id=0, name="Comité exécutif", description="Pour cette section, seulement une personne peut-être élue par poste.")
     groupe_admin = Group(id=1, name="Conseil d'administration", description="Vote de confiance pour les postes saisonniers au conseil d'administration de l'AGEG.")
     groups = [groupe_exec, groupe_admin]
 
