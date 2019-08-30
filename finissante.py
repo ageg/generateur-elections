@@ -23,7 +23,7 @@ if os.path.isfile('example/Candidatures.csv'):
         "Webmestre",
         "Direction 5@8",
         "Direction Affaires Sociales",
-        "Direction Bal / Voyages",
+        "Direction Bal / Voyage",
         "Direction Souvenirs",
         "Direction Casino / Jonc",
         "Direction Journée Carrière",
@@ -40,8 +40,8 @@ if os.path.isfile('example/Candidatures.csv'):
     fc = read_csv('example/Candidatures.csv', sep=';')
 
     CONCENTRATION = 'Concentration'
-    NOM_USUEL = 'Nom usuel'
-    PHOTO = 'Photo_URL'
+    NOM_USUEL = 'Nom Complet'
+    PHOTO = 'Photo'
     TEXTE_DESCRIPTIF = 'Texte descriptif'
     POSTES_VISES = [
         'Poste visé #1',
