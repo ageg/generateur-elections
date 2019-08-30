@@ -70,3 +70,6 @@ Exécutez le fichier *finissante.py* avec Python.
 # Limesurvey (Importer)
 
 Le formualire généré à *result/survey.lss*. Suivez les instructions suivantes pour l'importer dans Limesurvey: https://manual.limesurvey.org/Surveys_-_introduction#Import_a_survey
+
+## Resultat de Finissante
+Pour avoir les résultats de la finissantes après un sondage il faut exporter les résultats en CSV. Vous pouvez suivre cela : https://manual.limesurvey.org/Exporting_results. Ensuite il faut mettre les résultats dans `/example` avec le nom `results.csv`. Vous pouvez ensuite utiliser phyton 3 directement sur votre ordinateur ou utiliser votre image Docker en changent le Dockerfile avec : `RUN python result.py`. Le résultat sera imprimée dans la console.
