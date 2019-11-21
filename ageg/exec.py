@@ -23,21 +23,25 @@ postes = [
     "Vice-Présidence aux Affaires Sociales",
     "Vice-Présidence aux Affaires Universitaires",
     "Vice-Présidence aux Activités Extracurriculaires",
-    "Vice-Présidence aux Employés et Communications",
-    "Vice-Présidence au Développement Durable"
+    "Vice-Présidence à l'Image et aux Communications",
+    "Vice-Présidence au Développement Durable",
+    "Vice-Présidence aux Affaires Externes",
+    "Vice-Présidence aux Cycles Supérieurs",
 ]
 
 abbreviations = {
     "Présidence": "PREZ",
     "Vice-Présidence aux Affaires Légales": "VPAL",
     "Vice-Présidence aux Affaires Internes": "VPAI",
+    "Vice-Présidence aux Affaires Externes": "VPEX",
     "Vice-Présidence aux Affaires Financières": "VPAF",
     "Vice-Présidence aux Affaires Pédagogiques": "VPAP",
     "Vice-Présidence aux Affaires Sociales": "VPAS",
     "Vice-Présidence aux Affaires Universitaires": "VPAU",
     "Vice-Présidence aux Activités Extracurriculaires": "VPAX",
-    "Vice-Présidence aux Employés et Communications": "VPEC",
-    "Vice-Présidence au Développement Durable": "VPDD"
+    "Vice-Présidence à l'Image et aux Communications": "VPIC",
+    "Vice-Présidence au Développement Durable": "VPDD",
+    "Vice-Présidence aux Cycles Supérieurs": "VPCS",
 }
 
 def zeroPad(value):
@@ -55,7 +59,7 @@ def generer_questions_exec(gid):
         NOM_USUEL: -1,
         PHOTO: -1,
         TEXTE_DESCRIPTIF: -1,
-        POSTE_VISE: -1   
+        POSTE_VISE: -1
     }
 
     for col in colonnes.keys():
@@ -93,7 +97,7 @@ def generer_questions_exec(gid):
         order = questions_map[poste].answer_count()
         lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
             description="<p><strong>La chaise</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-            image = "http://vote.association.usherbrooke.ca/images/chaise.jpg"
+            image = "https://vote.ageg.ca/images/chaise.jpg"
         )
         questions_map[poste].add_answer(lachaise)
         questions_map[poste].add_option(lachaise)

@@ -1,4 +1,4 @@
 FROM python:3.6
 COPY . .
 RUN pip install -r requirements.txt
-RUN python finissante.py
+RUN python ageg.py

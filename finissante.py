@@ -110,7 +110,7 @@ if os.path.isfile('example/Candidatures.csv'):
         order = questions_map[poste].answer_count()
         lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
             description="<p><strong>La chaise (Whatever)</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-            image = "http://vote.association.usherbrooke.ca/images/chaise.jpg"
+            image = "https://vote.ageg.ca/images/chaise.jpg"
         )
         questions_map[poste].add_option(lachaise)
         questions_map[poste].add_answer(lachaise)
@@ -120,6 +120,9 @@ if os.path.isfile('example/Candidatures.csv'):
 
     survey = mytemplate.render(groups=groups,questions=questions, subquestions=None, withAttributes=True)
 
+    mypath = "result"
+    if not os.path.isdir(mypath):
+        os.makedirs(mypath)
     survey_file = open("result/finissante-survey.lss", "w+b")
     survey_file.write(survey)
     survey_file.close()
