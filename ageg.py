@@ -23,7 +23,7 @@ if os.path.isfile('example/admin.csv') and os.path.isfile('example/executif.csv'
     question_admin = Question(id=100, code="CASH20", gid=groupe_admin.gid, title="Qui voulez-vous comme administrateurs saisonniers de l'AGEG?", type='F')
     question_admin.add_answer(Answer(qid=question_admin.qid, value="Oui", code="A1", order=1))
     question_admin.add_answer(Answer(qid=question_admin.qid, value="Non", code="A2", order=2))
-    question_admin.add_answer(Answer(qid=question_admin.qid, value="Non confience", code="A3", order=2))
+    question_admin.add_answer(Answer(qid=question_admin.qid, value="Non confiance", code="A3", order=2))
 
     sousquestions_admin = generer_sousquestion_admin(question_admin)
     options_admin = generer_options_admin()
