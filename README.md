@@ -53,6 +53,7 @@ Exécutez le fichier *ageg.py* avec Python.
 ```python ageg.py```
 
 # Finissante
+Template : https://docs.google.com/forms/d/1cK_dzTf8hwymZAxEGyuokbktFlXucpTPfzxWo_52Ejs/edit?usp=sharing
 
 ## Préparation
 
