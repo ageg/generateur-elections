@@ -55,7 +55,7 @@ def generer_questions_exec(gid):
         NOM_USUEL: -1,
         PHOTO: -1,
         TEXTE_DESCRIPTIF: -1,
-        POSTE_VISE: -1   
+        POSTE_VISE: -1
     }
 
     for col in colonnes.keys():
