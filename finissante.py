@@ -37,14 +37,14 @@ if os.path.isfile('example/Candidatures.csv'):
         "Sous-Direction Photographie"
     ]
 
-    fc = read_csv('example/Candidatures.csv', sep=';')
+    fc = read_csv('example/Candidatures.csv')
 
     CONCENTRATION = 'Concentration'
     NOM_USUEL = 'Nom Complet'
     PHOTO = 'Photo'
     TEXTE_DESCRIPTIF = 'Texte descriptif'
     POSTES_VISES = [
-        'Poste visé #1',
+        'Poste Visé #1',
         'Poste visé #2',
         'Poste visé #3'
     ]
