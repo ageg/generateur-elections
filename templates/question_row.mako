@@ -10,7 +10,7 @@
         <%include file="question_description.mako" args="title=question.title, options=question.options"/>
     ]]></question>
     <preg/>
-    <help><![CDATA[Pour ce poste, une seule personne peut-être élue. Veuillez placer les candidatures en ordre de préférence, du haut vers le bas.]]></help>
+    <help><![CDATA[Pour ce poste, veuillez voter "Oui", "Non", "Non confiance", "Sans réponse" pour chaque candidat.]]></help>
     <other><![CDATA[N]]></other>
     <mandatory><![CDATA[N]]></mandatory>
     <question_order><![CDATA[${question.order}]]></question_order>

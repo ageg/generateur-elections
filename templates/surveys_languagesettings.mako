@@ -30,8 +30,8 @@
     <surveyls_survey_id><![CDATA[172244]]></surveyls_survey_id>
     <surveyls_language><![CDATA[fr]]></surveyls_language>
     <surveyls_title><![CDATA[Élection AGEG H19]]></surveyls_title>
-    <surveyls_description><![CDATA[Élections de l'AGEG à l'hiver 2019 pour les administratrices et administrateurs et le conseil exécutif de l'automne 2019]]></surveyls_description>
-    <surveyls_welcometext><![CDATA[Bon matin,<br />
+    <surveyls_description><![CDATA[Élections de l'AGEG pour les administratrices et administrateurs et le conseil exécutif de l'été 2020]]></surveyls_description>
+    <surveyls_welcometext><![CDATA[Bonjour,<br />
 <br />
 C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les élections des administrateurs saisonniers et membres du comité exécutif de l'AGEG pour l'automne 2019.<br />
 <br />
@@ -55,7 +55,7 @@ Merci d'avoir participé et bonne journée]]></surveyls_endtext>
 	<title></title>
 </head>
 <body>
-<p>Bon matin {FIRSTNAME},<br />
+<p>Bonjour {FIRSTNAME},<br />
 <br />
 Vous êtes par la présente invité(e) à inscrire votre vote pour le comité exécutif et le conseil d'administration de l'AGEG.</p>
 
@@ -73,7 +73,7 @@ Merci de votre temps,<br />
 	<title></title>
 </head>
 <body>
-<p>Bon matin {FIRSTNAME},<br />
+<p>Bonjour {FIRSTNAME},<br />
 <br />
 Vous avez été invité(e) à inscrire votre vote pour le comité exécutif et le conseil d'administration de l'AGEG.<br />
 <br />
@@ -108,7 +108,7 @@ Si vous avez des questions à propos de ce questionnaire, ou si vous ne vous êt
 <head>
 	<title></title>
 </head>
-<body>Bon matin {FIRSTNAME},<br />
+<body>Bonjour {FIRSTNAME},<br />
 <br />
 Ce courriel vous confirme que votre réponse a été enregistrée. Merci pour votre participation.<br />
 <br />

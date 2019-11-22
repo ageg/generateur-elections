@@ -38,9 +38,9 @@ def generer_sousquestion_admin(parent):
         code = "SQ" + zeroPad(index+1)
         subquestion = Subquestion(qid=parent.qid+index+1, parent=parent.qid, gid=parent.gid, code=code, value=candidat[colonnes[NOM_USUEL]], order=index, type='T')
         sous_questions.append(subquestion)
-    
+
     return sous_questions
-    
+
 def generer_options_admin():
     options = []
 
@@ -56,5 +56,5 @@ def generer_options_admin():
         options.append(Option(value=candidat[colonnes[NOM_USUEL]], code="A{numeral}".format(numeral=index+1), order=index,
                 description=description, image=candidat[colonnes[PHOTO]])
         )
-    
+
     return options
