@@ -95,11 +95,18 @@ def generer_questions_exec(gid):
 
     for poste in questions_map:
         order = questions_map[poste].answer_count()
-        lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
-            description="<p><strong>La chaise</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-            image = "https://vote.ageg.ca/images/chaise.jpg"
+        # Durant le dernier CA de l'été 2020 il a été voté de changer la chaise pour la salade de patate
+        #lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
+        #    description="<p><strong>La chaise</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
+        #    image = "https://vote.ageg.ca/images/chaise.jpg"
+        #)
+        #questions_map[poste].add_answer(lachaise)
+        #questions_map[poste].add_option(lachaise)
+        salades_de_patate = Option(value="La salade de patates", code="A{numeral}".format(numeral=order+1), order=order,
+            description="<p><strong>La salade de patates</strong></p><p>La salade de patates est énergique. Elle te soutient. Elle comble les besoins des membres et elle est toujours bonne en lendemain de veille.</p>",
+            image = "https://vote.ageg.ca/images/salade-de-patate.jpg"
         )
-        questions_map[poste].add_answer(lachaise)
-        questions_map[poste].add_option(lachaise)
+        questions_map[poste].add_option(salade_de_patate)
+        questions_map[poste].add_answer(salade_de_patate)
 
     return questions
