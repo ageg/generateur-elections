@@ -2,18 +2,26 @@
 
 Ce programme sert à générer des questionnaires pour Limesurvey (format .lss) pour les élections de l'AGEG. Ceci ce fait en lui passant en entrée un classeur avec les candidatures.
 
+
+# Rendre public les images sur google drive
+Il a un petit script dans le root du repo : `script-conversion-image.py`. Ce script demande d'avoir `admin.csv` et `executif.csv` dans `/example` et permet de changer les urls dans images pour utiliser le Google Drive SDK API. Pour faire la transition :
+```
+pip install requests
+python script-conversion-image.py
+```
+
 ## Rouler avec Docker
 Savoir plus sur Docker : https://www.docker.com/why-docker
-### Si vous faites les élections de l'AGEG : 
-Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `admin.csv` et `executif.csv`. Ensuite vous pouvez faire : 
+### Si vous faites les élections de l'AGEG :
+Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `admin.csv` et `executif.csv`. Ensuite vous pouvez faire :
 
 ```
     docker build -t ageg-election .
     docker run -i ageg-election /bin/bash -c 'cat result/ageg-survey.lss' > $PWD/result/ageg-survey.lss
 ```
 
-### Si vous faites les élections de promo : 
-Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `Candidatures.csv` Ensuite vous pouvez faire : 
+### Si vous faites les élections de promo :
+Avant tout il faut avoir les csv des inscriptions dans `/example`. Il vous fait `Candidatures.csv` Ensuite vous pouvez faire :
 
 ```
     docker build -t ageg-election .
