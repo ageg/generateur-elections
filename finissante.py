@@ -12,7 +12,7 @@ from models.group import Group
 from models.option import Option
 from models.question import Question
 
-if os.path.isfile('example/Candidatures.csv'):
+if os.path.isfile('input/Candidatures.csv'):
     print("JOB START ! Starting generation for finissante !")
 
     postes = [
@@ -49,7 +49,7 @@ if os.path.isfile('example/Candidatures.csv'):
         'Poste visé #3'
     ]
 
-    colonnes = {
+    columns = {
         CONCENTRATION: -1,
         NOM_USUEL: -1,
         PHOTO: -1,
@@ -59,66 +59,63 @@ if os.path.isfile('example/Candidatures.csv'):
         POSTES_VISES[2]: -1
     }
 
-    for col in colonnes.keys():
-        try:
-            colonnes[col] = fc.columns.get_loc(col)
-        except KeyError:
-            print(f"Colonne \"{col}\" manquante")
+    for col in columns.keys():
+        if col not in fc.columns:
+            print(f"Column \"{col}\" not in Candidatures.csv")
             exit()
 
     groups = []
     questions = []
     questions_map = {}
 
-    def zeroPad(value):
-        return "0" + str(value) if value < 10 else str(value)
-
-    for i in range(0, len(postes)):
-        question_code = "Q{numeral}".format(numeral=zeroPad(i+1))
-        question_name = "Qui voulez-vous au poste de {poste}?".format(poste=postes[i])
+    for i, poste in enumerate(postes):
+        question_code = f"Q{i + 1:02}"
+        question_name = f"Qui voulez-vous au poste de {poste}?"
         attributes = [
             Attribute("max_answers", "3"),
             Attribute("max_subquestions", "3"),
             Attribute("min_answers", "0")
         ]
 
-        group = Group(id=i, name=postes[i])
+        group = Group(id=i, name=poste)
         question = Question(id=i, code=question_code, gid=group.gid, title=question_name, attributes=attributes)
 
         groups.append(group)
         questions.append(question)
-        questions_map[postes[i]] = question
+        questions_map[poste] = question
 
-    for candidat in fc.values:
+    for _, candidat in fc.iterrows():
         for POSTE in POSTES_VISES:
-            poste = candidat[colonnes[POSTE]]
+            poste = candidat[POSTE]
             if isinstance(poste, str):
-                nom = candidat[colonnes[NOM_USUEL]]
+                nom = candidat[NOM_USUEL]
                 order = questions_map[poste].answer_count()
-                code = "A{numeral}".format(numeral=order+1)
-                concentration = candidat[colonnes[CONCENTRATION]]
+                code = "A{numeral}".format(numeral=order + 1)
+                concentration = candidat[CONCENTRATION]
 
-                description = "<p><strong>{name} ({concentration})</strong></p>".format(name=nom, concentration=concentration)
-                for line in candidat[colonnes[TEXTE_DESCRIPTIF]].split('\n'):
-                    description += "<p>{line}</p>\n".format(line=line)
+                description = f"<p><strong>{nom} ({concentration})</strong></p>"
+                for line in candidat[TEXTE_DESCRIPTIF].split('\n'):
+                    description += f"<p>{line}</p>\n"
 
-                option = Option(value=nom, code=code, order=order, description=description, image=candidat[colonnes[PHOTO]])
+                option = Option(value=nom, code=code, order=order, description=description,
+                                image=candidat[PHOTO])
                 questions_map[poste].add_option(option)
                 questions_map[poste].add_answer(option)
 
     for poste in questions_map:
         order = questions_map[poste].answer_count()
-        lachaise = Option(value="La chaise", code="A{numeral}".format(numeral=order+1), order=order,
+        lachaise = Option(value="La chaise", code=f"A{order+1}", order=order,
             description="<p><strong>La chaise (Whatever)</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-            image = "https://vote.ageg.ca/images/chaise.jpg"
+            image="https://vote.ageg.ca/images/chaise.jpg"
         )
         questions_map[poste].add_option(lachaise)
         questions_map[poste].add_answer(lachaise)
 
     mylookup = TemplateLookup(directories=['.'], input_encoding="utf-8", output_encoding="utf-8")
-    mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
+    mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_encoding="utf-8",
+                          output_encoding="utf-8")
 
-    survey = mytemplate.render(groups=groups,questions=questions, subquestions=None, withAttributes=True)
+    survey = mytemplate.render(groups=groups, questions=questions, subquestions=None, withAttributes=True)
 
     mypath = "result"
     if not os.path.isdir(mypath):

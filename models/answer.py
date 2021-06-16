@@ -6,4 +6,4 @@ class Answer:
         self.order = order
 
     def __repr__(self):
-        return "<Answer qid={qid} value={value} code={code} order={order}>".format(qid=self.qid, value=self.value, code=self.code, order=self.order)
+        return f"<Answer qid={self.qid} value={self.value} code={self.code} order={self.order}>"

@@ -1,4 +1,4 @@
- <surveys_languagesettings>
+ <%page args="survey_options"/><surveys_languagesettings>
   <fields>
    <fieldname>surveyls_survey_id</fieldname>
    <fieldname>surveyls_language</fieldname>
@@ -29,65 +29,16 @@
    <row>
     <surveyls_survey_id><![CDATA[172244]]></surveyls_survey_id>
     <surveyls_language><![CDATA[fr]]></surveyls_language>
-    <surveyls_title><![CDATA[Élection AGEG H19]]></surveyls_title>
-    <surveyls_description><![CDATA[Élections de l'AGEG pour les administratrices et administrateurs et le conseil exécutif de l'été 2020]]></surveyls_description>
-    <surveyls_welcometext><![CDATA[Bonjour,<br />
-<br />
-C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les élections des administrateurs saisonniers et membres du comité exécutif de l'AGEG pour l'automne 2019.<br />
-<br />
-L'Association générale étudiante en génie est une association qui défend les droits de ses membres et offre des services à sa communauté par le biais de personnes représentantes issues de ses membres. Tout au long de leur mandat, ces représentants seront appelés à se prononcer au nom de votre association et donc en votre nom. Il est donc important que vous fassiez confiance en ces gens et que vous leur accordiez votre vote seulement si vous leur faites confiance de bien vous représenter.<br />
-<br />
-Les réponses aux questions sont anonymes et il n'est pas possible de voter plus d'une fois. Nous vous invitons donc à voter selon vos valeurs et vos convictions et non par rapport à la réaction de vos amis ou collègues.<br />
-<br />
-Le vote sera ouvert jusqu'au 6 avril 2019 à 16h30.<br />
-<br />
-Je vous remercie de votre participation et de votre confiance rénouvelée en notre association étudiante,<br />
-<strong>{ADMINNAME}<br />
-Directeurs d'élections, session d'hiver 2019</strong>]]></surveyls_welcometext>
-    <surveyls_endtext><![CDATA[Des postes resteront vacants suite à cette élection régulière. Nous vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.<br />
-<br />
-Merci d'avoir participé et bonne journée]]></surveyls_endtext>
+    <surveyls_title><![CDATA[${survey_options.title}]]></surveyls_title>
+    <surveyls_description><![CDATA[${survey_options.description}]]></surveyls_description>
+    <surveyls_welcometext><![CDATA[${survey_options.welcome_text}]]></surveyls_welcometext>
+    <surveyls_endtext><![CDATA[${survey_options.end_text}]]></surveyls_endtext>
     <surveyls_url><![CDATA[https://www.ageg.ca]]></surveyls_url>
     <surveyls_urldescription/>
-    <surveyls_email_invite_subj><![CDATA[Élections de l'AGEG - Automne 2019]]></surveyls_email_invite_subj>
-    <surveyls_email_invite><![CDATA[<html>
-<head>
-	<title></title>
-</head>
-<body>
-<p>Bonjour {FIRSTNAME},<br />
-<br />
-Vous êtes par la présente invité(e) à inscrire votre vote pour le comité exécutif et le conseil d'administration de l'AGEG.</p>
-
-<p>Pour participer, veuillez cliquer sur le lien ci-dessous:<br />
-{SURVEYURL}<br />
-<br />
-Merci de votre temps,<br />
-{ADMINNAME} ({ADMINEMAIL})</p>
-</body>
-</html>
-]]></surveyls_email_invite>
-    <surveyls_email_remind_subj><![CDATA[Rappel pour les élections de l'AGEG]]></surveyls_email_remind_subj>
-    <surveyls_email_remind><![CDATA[<html>
-<head>
-	<title></title>
-</head>
-<body>
-<p>Bonjour {FIRSTNAME},<br />
-<br />
-Vous avez été invité(e) à inscrire votre vote pour le comité exécutif et le conseil d'administration de l'AGEG.<br />
-<br />
-Nous avons pris en compte que vous n'avez pas encore complété le questionnaire, et nous vous rappelons que celui-ci est toujours disponible si vous souhaitez participer. Vous avez jusqu'à samedi le 1er décembre (demain) à 16h30 pour voter.<br />
-<br />
-Pour participer, veuillez cliquer sur le lien ci-dessous:<br />
-{SURVEYURL}</p>
-
-<p><br />
-Merci de votre temps,<br />
-{ADMINNAME} ({ADMINEMAIL})</p>
-</body>
-</html>
-]]></surveyls_email_remind>
+    <surveyls_email_invite_subj><![CDATA[${survey_options.email_invite_subject}]]></surveyls_email_invite_subj>
+    <surveyls_email_invite><![CDATA[${survey_options.email_invite_body}]]></surveyls_email_invite>
+    <surveyls_email_remind_subj><![CDATA[${survey_options.email_reminder_subject}]]></surveyls_email_remind_subj>
+    <surveyls_email_remind><![CDATA[${survey_options.email_reminder_body}]]></surveyls_email_remind>
     <surveyls_email_register_subj><![CDATA[Confirmation d'enregistrement au questionnaire]]></surveyls_email_register_subj>
     <surveyls_email_register><![CDATA[<html>
 <head>

@@ -15,6 +15,6 @@
    %if withAttributes:
       <%include file="question_attributes.mako" args="questions=questions"/>
    % endif
-   <%include file="surveys.mako" />
-   <%include file="surveys_languagesettings.mako" />
+   <%include file="surveys.mako" args="survey_options=survey_options"/>
+   <%include file="surveys_languagesettings.mako" args="survey_options=survey_options"/>
 </document>
