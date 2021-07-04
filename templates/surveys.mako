@@ -1,4 +1,4 @@
- <surveys>
+ <%page args="survey_options"/><surveys>
   <fields>
    <fieldname>sid</fieldname>
    <fieldname>admin</fieldname>
@@ -60,8 +60,8 @@
   <rows>
    <row>
     <sid><![CDATA[172244]]></sid>
-    <admin><![CDATA[Tommy Savaria]]></admin>
-    <expires><![CDATA[2018-04-06 16:30:00]]></expires>
+    <admin><![CDATA[${survey_options.admin}]]></admin>
+    <expires><![CDATA[${survey_options.expires}]]></expires>
     <adminemail><![CDATA[elections@ageg.ca]]></adminemail>
     <anonymized><![CDATA[Y]]></anonymized>
     <faxto/>

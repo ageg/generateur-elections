@@ -1,7 +1,7 @@
 from math import isnan
 from pandas import read_csv
 
-results = read_csv("example/results.csv")
+results = read_csv("input/results.csv")
 
 res = {}
 

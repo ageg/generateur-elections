@@ -1,4 +1,5 @@
 **/__pycache__/**
-example/**
-result/**
+input/**
+output/**
 venv/**
+.idea/

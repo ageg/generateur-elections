@@ -8,12 +8,12 @@ class Option:
 
     def set_order(self, order):
         self.order = order
-        self.code = "A{numeral}".format(numeral=order+1)
+        self.code = f"A{order+1}"
         
     def set_description(self, description):
-        self.description = "<p><strong>{name}</strong></p>".format(name=self.name)
+        self.description = f"<p><strong>{self.value}</strong></p>"
         for line in description.split('\n'):
-            self.description += "<p>{line}</p>\n".format(line=line)
+            self.description += f"<p>{line}</p>\n"
 
     def __repr__(self):
-        return "<Candidat name={name} concentration={concentration}>".format(name=self.nom, concentration=self.concentration)
+        return f"<Candidat name={self.value} concentration={self.code}>"
