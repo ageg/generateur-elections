@@ -1,11 +1,13 @@
 import itertools
-from .attribute import Attribute
 
 
 class Question:
     uid = itertools.count()
-    def __init__(self, code, gid, title, attributes=[], qtype='R', order=0):
-        self.qid = next(Question.uid) + 300
+
+    def __init__(self, code, gid, title, attributes=None, qtype='R', order=0):
+        if attributes is None:
+            attributes = []
+        self.qid = next(Question.uid) + 400
         self.gid = gid
         self.code = code
         self.answers = []

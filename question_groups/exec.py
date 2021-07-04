@@ -86,10 +86,17 @@ def generate_questions(conf):
 
     for poste in questions_map:
         order = questions_map[poste].answer_count()
-        lachaise = Option(value="La chaise", code=f"A{order + 1}", order=order,
-                          description="<p><strong>La chaise</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-                          image="https://vote.ageg.ca/images/chaise.jpg"
-                          )
+        lachaise = Option(
+            value="La chaise",
+            code=f"A{order + 1}",
+            order=order,
+            description=(
+                "<p><strong>La chaise</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support "
+                "et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour"
+                ".</p>"
+            ),
+            image="https://vote.ageg.ca/images/chaise.jpg"
+        )
         questions_map[poste].add_answer(lachaise)
         questions_map[poste].add_option(lachaise)
 

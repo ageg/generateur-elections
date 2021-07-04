@@ -42,9 +42,7 @@ POSTES_VISES = [
 
 def generate_questions(conf):
     file = read_csv(f'input/{conf.input}')
-    name = f"Comité exécutif {conf.session}"
     description = "Pour cette section, seulement une personne peut-être élue par poste."
-    group = Group(name, description)
 
     columns = {
         CONCENTRATION: -1,
@@ -74,7 +72,7 @@ def generate_questions(conf):
             Attribute("min_answers", "0")
         ]
 
-        group = Group(name=poste)
+        group = Group(name=poste, description=description)
         question = Question(code=question_code, gid=group.gid, title=question_name, attributes=attributes)
 
         groups.append(group)
@@ -94,17 +92,29 @@ def generate_questions(conf):
                 for line in candidat[TEXTE_DESCRIPTIF].split('\n'):
                     description += f"<p>{line}</p>\n"
 
-                option = Option(value=nom, code=code, order=order, description=description,
-                                image=candidat[PHOTO])
+                option = Option(
+                    value=nom,
+                    code=code,
+                    order=order,
+                    description=description,
+                    image=candidat[PHOTO]
+                )
                 questions_map[poste].add_option(option)
                 questions_map[poste].add_answer(option)
 
     for poste in questions_map:
         order = questions_map[poste].answer_count()
-        lachaise = Option(value="La chaise", code=f"A{order + 1}", order=order,
-                          description="<p><strong>La chaise (Whatever)</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour.</p>",
-                          image="https://vote.ageg.ca/images/chaise.jpg"
-                          )
+        lachaise = Option(
+            value="La chaise",
+            code=f"A{order + 1}",
+            order=order,
+            description=(
+                "<p><strong>La chaise (Whatever)</strong></p><p>La chaise ne vous laisseras pas tomber. Elle offre un "
+                "bon support et connait bien son dossier. Elle connait sa place et ne s'exprime pas quand ce n'est pas "
+                "son tour.</p>"
+            ),
+            image="https://vote.ageg.ca/images/chaise.jpg"
+        )
         questions_map[poste].add_option(lachaise)
         questions_map[poste].add_answer(lachaise)
 

@@ -9,7 +9,7 @@
    <%include file="answers.mako" args="questions=questions"/>
    <%include file="groups.mako" args="groups=groups"/>
    <%include file="questions.mako" args="questions=questions"/>
-   % if not subquestions==None:
+   % if not subquestions is None :
       <%include file="subquestions.mako" args="subquestions=subquestions"/>
    % endif
    %if withAttributes:

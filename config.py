@@ -14,11 +14,11 @@ config = SurveyConfig(
     title="Élection AGEG H21",
     comity="le comité exécutif et le conseil d'administration",
     comity_session="été et l'automne 2021",
-    groups=[GroupConfig("exec", "exec_e21.csv", "E21", []), # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
+    groups=[GroupConfig("exec", "exec_e21.csv", "E21", []),  # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
             GroupConfig("exec", "exec_a21.csv", "A21", []),
             GroupConfig("admin", "admin_E21.csv", "E21", []),
             GroupConfig("admin", "admin_A21.csv", "A21", []),
-            GroupConfig("admin", "admin_annuel.csv", "Annuel", []),]
+            GroupConfig("admin", "admin_annuel.csv", "Annuel", []), ]
 )
 
 # config = SurveyConfig(

@@ -17,7 +17,9 @@ if config.type == "l'AGEG" and not all([g.type == "admin" or g.type == "exec" fo
     print(f"Elections for l'AGEG must only contain exec or admin question groups, see GroupConfig in config.py")
     exit()
 
-if config.type == "la finissante" and (len(config.groups) > 1 or not all([g.type == "finissante" for g in config.groups])):
+if config.type == "la finissante" and (
+        len(config.groups) > 1 or not all([g.type == "finissante" for g in config.groups])
+):
     print(f"Elections for la finissante must only contain one finissante question group, see GroupConfig in config.py")
     exit()
 
@@ -50,9 +52,16 @@ survey_options = Survey(config)
 mylookup = TemplateLookup(directories=['.'], input_encoding="utf-8", output_encoding="utf-8")
 mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_encoding="utf-8", output_encoding="utf-8")
 
+output_file = ""
+survey = ""
+
 if config.type == "l'AGEG":
-    survey = mytemplate.render(survey_options=survey_options, groups=groups, questions=questions,
-                               subquestions=sousquestions, withAttributes=False)
+    survey = mytemplate.render(
+        survey_options=survey_options,
+        groups=groups, questions=questions,
+        subquestions=sousquestions,
+        withAttributes=False
+    )
     output_file = "ageg-survey.lss"
 elif config.type == "la finissante":
     survey = mytemplate.render(groups=groups, questions=questions, subquestions=None, withAttributes=True)

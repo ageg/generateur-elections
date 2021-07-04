@@ -33,8 +33,12 @@ def generate_questions(conf):
             print(f"Column \"{col}\" not in {conf.input}")
             exit()
 
-    question_admin = Question(code="CAS" + conf.session, gid=group.gid,
-                              title="Qui voulez-vous comme administrateurs saisonniers de l'AGEG?", qtype='F')
+    question_admin = Question(
+        code="CAS" + conf.session,
+        gid=group.gid,
+        title="Qui voulez-vous comme administrateurs saisonniers de l'AGEG?",
+        qtype='F'
+    )
 
     question_admin.add_answer(Answer(qid=question_admin.qid, value="Oui", code="A1", order=1))
     question_admin.add_answer(Answer(qid=question_admin.qid, value="Non", code="A2", order=2))
@@ -43,9 +47,13 @@ def generate_questions(conf):
     sous_questions = []
     for index, candidat in file.iterrows():
         code = f"SQ{index + 1:02}"
-        subquestion = Subquestion(parent=question_admin.qid, gid=question_admin.gid,
-                                  code=code,
-                                  value=candidat[NOM_USUEL], order=index, qtype='T')
+        subquestion = Subquestion(
+            parent=question_admin.qid,
+            gid=question_admin.gid,
+            code=code,
+            value=candidat[NOM_USUEL],
+            order=index, qtype='T'
+        )
         sous_questions.append(subquestion)
 
     options = []
@@ -59,9 +67,15 @@ def generate_questions(conf):
         for line in candidat[TEXTE_DESCRIPTIF].split('\n'):
             description += f"<p>{line}</p>\n"
 
-        options.append(Option(value=candidat[NOM_USUEL], code=f"A{index + 1}", order=index,
-                              description=description, image=candidat[PHOTO])
-                       )
+        options.append(
+            Option(
+                value=candidat[NOM_USUEL],
+                code=f"A{index + 1}",
+                order=index,
+                description=description,
+                image=candidat[PHOTO]
+            )
+        )
 
     # return options
 

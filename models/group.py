@@ -1,10 +1,12 @@
 import itertools
 
+
 class Group:
     uid = itertools.count()
+
     def __init__(self, name, description=""):
         self.order = next(Group.uid)
-        self.gid = self.order + 420
+        self.gid = self.order + 300
         self.name = name
         self.description = description
     

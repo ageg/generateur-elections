@@ -10,3 +10,4 @@ for i, row in participants.iterrows():
     participants.iloc[i, 0] = unidecode.unidecode(f"{participants.iloc[i, 2]}.{participants.iloc[i, 1]}@usherbrooke.ca")
 
 participants.to_csv("output/participants.csv",index=False)
+
