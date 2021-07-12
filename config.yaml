@@ -1,0 +1,31 @@
+---
+#Todo config variables in english, text in french
+# move text to config
+# modularize functions
+# move settings to config
+# add error parsing module
+# add file with constants?
+# parse multiple semesters in one file
+admin: "Yves-Alexandre Beebe"
+# format to respect -> year-month-day hour:minute:second
+expiry: "2021-07-16 23:59:59"
+expiry_text: "vendredi le 16 juillet 2021 à minuit"
+type: "l'AGEG"
+session: "été 2021"
+title: "Élection AGEG E21"
+comity: "le comité exécutif et le conseil d'administration"
+comity_session: "automne 2021 et l'hiver 2022"
+groups:
+  - type: "exec"
+    input: "exec_a21_2.csv"
+    session: "A21"
+    unused_posts: ["VPDD", "VPAU"]
+  - type: "exec"
+    input: "exec_h22.csv"
+    session: "H22"
+  - type: "admin"
+    input: "admin_a21_2.csv"
+    session: "A21"
+  - type: "admin"
+    input: "admin_h22.csv"
+    session: "H22"

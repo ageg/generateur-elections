@@ -14,9 +14,9 @@ TEXTE_DESCRIPTIF = 'Texte descriptif'
 
 
 def generate_questions(conf):
-    file = read_csv(f"input/{conf.input}")
+    file = read_csv(f"input/{conf['input']}")
 
-    name = f"Conseil d'administration {conf.session}"
+    name = f"Conseil d'administration {conf['session']}"
     description = "Vote de confiance pour les postes saisonniers au conseil d'administration de l'AGEG."
     group = Group(name, description)
 
@@ -30,11 +30,11 @@ def generate_questions(conf):
 
     for col in columns.keys():
         if col not in file.columns:
-            print(f"Column \"{col}\" not in {conf.input}")
+            print(f"Column \"{col}\" not in {conf['input']}")
             exit()
 
     question_admin = Question(
-        code="CAS" + conf.session,
+        code="CAS" + conf['session'],
         gid=group.gid,
         title="Qui voulez-vous comme administrateurs saisonniers de l'AGEG?",
         qtype='F'

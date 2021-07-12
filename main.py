@@ -1,45 +1,47 @@
 import os
 
+import yaml
+
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
 from question_groups import admin, executif, finissante
 from models.survey import Survey
 
-from config import config
+stream = open("config.yaml", 'r')
+config = yaml.safe_load(stream)
 
-for group in config.groups:
-    if not os.path.isfile(f"input/{group.input}"):
-        print(f"Check if {group.input} is present in input directory")
+for group in config['groups']:
+    if not os.path.isfile(f"input/{group['input']}"):
+        print(f"Check if {group['input']} is present in input directory")
         exit()  # TODO error code?
 
-if config.type == "l'AGEG" and not all([g.type == "admin" or g.type == "exec" for g in config.groups]):
+if config['type'] == "l'AGEG" and not all([g['type'] == "admin" or g['type'] == "exec" for g in config['groups']]):
     print(f"Elections for l'AGEG must only contain exec or admin question groups, see GroupConfig in config.py")
     exit()
 
-if config.type == "la finissante" and (
-        len(config.groups) > 1 or not all([g.type == "finissante" for g in config.groups])
+if config['type'] == "la finissante" and (
+        len(config['groups']) > 1 or not all([g['type'] == "finissante" for g in config['groups']])
 ):
     print(f"Elections for la finissante must only contain one finissante question group, see GroupConfig in config.py")
     exit()
 
-print(f"JOB START ! Starting generation for {config.type}!")
+print(f"JOB START ! Starting generation for {config['type']}!")
 groups = []
 questions = []
 sousquestions = []
 
-for i, group in enumerate(config.groups):
-    if group.type == "exec":
+for i, group in enumerate(config['groups']):
+    if group['type'] == "exec":
         group, question = executif.generate_questions(group)
         groups.append(group)
         questions.extend(question)
-
-    elif group.type == "admin":
+    elif group['type'] == "admin":
         group, question, sousquestion = admin.generate_questions(group)
         groups.append(group)
         questions.append(question)
         sousquestions.extend(sousquestion)
-    elif group.type == "finissante":
+    elif group['type'] == "finissante":
         group, question = finissante.generate_questions(group)
         groups.extend(group)
         questions.extend(question)
@@ -55,7 +57,7 @@ mytemplate = Template(filename='templates/base.mako', lookup=mylookup, input_enc
 output_file = ""
 survey = ""
 
-if config.type == "l'AGEG":
+if config['type'] == "l'AGEG":
     survey = mytemplate.render(
         survey_options=survey_options,
         groups=groups, questions=questions,
@@ -63,7 +65,7 @@ if config.type == "l'AGEG":
         withAttributes=False
     )
     output_file = "ageg-survey.lss"
-elif config.type == "la finissante":
+elif config['type'] == "la finissante":
     survey = mytemplate.render(groups=groups, questions=questions, subquestions=None, withAttributes=True)
     output_file = "finissante-survey.lss"
 else:

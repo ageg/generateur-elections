@@ -28,8 +28,8 @@ postes = {
 
 
 def generate_questions(conf):
-    file = read_csv(f"input/{conf.input}")
-    name = f"Comité exécutif {conf.session}"
+    file = read_csv(f"input/{conf['input']}")
+    name = f"Comité exécutif {conf['session']}"
     description = "Pour cette section, seulement une personne peut-être élue par poste."
     group = Group(name, description)
 
@@ -57,16 +57,19 @@ def generate_questions(conf):
     applied_posts = [poste for poste in postes if poste in file[POSTE_VISE].unique().tolist()]
 
     for i, poste in enumerate(applied_posts):
-        question_code = postes[poste] + conf.session
+        question_code = postes[poste] + conf['session']
         question_name = f"Qui voulez-vous au poste de {poste}?"
         question = Question(code=question_code, gid=group.gid, title=question_name, qtype='L', order=i)
 
         questions.append(question)
         questions_map[poste] = question
 
+    if 'unused_posts' not in conf.keys():
+        conf['unused_posts'] = []
+
     for poste in postes:
         if poste not in applied_posts:
-            conf.unused_posts.append(poste)
+            conf['unused_posts'].append(poste)
 
     for _, candidat in file.iterrows():
         poste = candidat[POSTE_VISE]

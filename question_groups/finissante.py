@@ -39,7 +39,7 @@ POSTES_VISES = [
 
 
 def generate_questions(conf):
-    file = read_csv(f'input/{conf.input}')
+    file = read_csv(f"input/{conf['input']}")
     description = "Pour cette section, seulement une personne peut-être élue par poste."
 
     columns = {
