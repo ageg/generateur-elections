@@ -6,7 +6,7 @@
         <fieldname>parent_qid</fieldname>
         <fieldname>sid</fieldname>
         <fieldname>gid</fieldname>
-        <fieldname>type</fieldname>
+        <fieldname>qtype</fieldname>
         <fieldname>title</fieldname>
         <fieldname>question</fieldname>
         <fieldname>preg</fieldname>

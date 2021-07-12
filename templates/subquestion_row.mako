@@ -4,7 +4,7 @@
     <parent_qid><![CDATA[${subquestion.parent}]]></parent_qid>
     <sid><![CDATA[172244]]></sid>
     <gid><![CDATA[${subquestion.gid}]]></gid>
-    <type><![CDATA[${subquestion.type}]]></type>
+    <type><![CDATA[${subquestion.qtype}]]></type>
     <title><![CDATA[${subquestion.code}]]></title>
     <question><![CDATA[${subquestion.value}]]></question>
     <other><![CDATA[N]]></other>

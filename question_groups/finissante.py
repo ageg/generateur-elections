@@ -1,5 +1,3 @@
-from sys import exit
-
 from pandas import read_csv
 
 from models.attribute import Attribute

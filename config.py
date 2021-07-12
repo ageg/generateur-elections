@@ -7,18 +7,18 @@ GroupConfig = namedtuple("GroupConfig", ["type", "input", "session", "unused_pos
 
 config = SurveyConfig(
     admin="Yves-Alexandre Beebe",
-    expiry="2021-04-07 23:59:59",  # format to respect -> year-month-day hour:minute:second
-    expiry_text="mercredi le 7 avril 2021 à minuit",
+    expiry="2021-07-16 23:59:59",  # format to respect -> year-month-day hour:minute:second
+    expiry_text="vendredi le 16 juillet 2021 à minuit",
     type="l'AGEG",
-    session="hiver 2021",
-    title="Élection AGEG H21",
+    session="été 2021",
+    title="Élection AGEG E21",
     comity="le comité exécutif et le conseil d'administration",
-    comity_session="été et l'automne 2021",
-    groups=[GroupConfig("exec", "exec_e21.csv", "E21", []),  # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
-            GroupConfig("exec", "exec_a21.csv", "A21", []),
-            GroupConfig("admin", "admin_E21.csv", "E21", []),
-            GroupConfig("admin", "admin_A21.csv", "A21", []),
-            GroupConfig("admin", "admin_annuel.csv", "Annuel", []), ]
+    comity_session="automne 2021 et l'hiver 2022",
+    groups=[GroupConfig("exec", "exec_a21_2.csv", "A21", ["VPAU","VPDD"]),  # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
+            GroupConfig("exec", "exec_h22.csv", "H22", []),
+            GroupConfig("admin", "admin_a21_2.csv", "A21", []),
+            GroupConfig("admin", "admin_h22.csv", "H22", []), ]
+            # GroupConfig("admin", "admin_annuel.csv", "Annuel", []), ]
 )
 
 # config = SurveyConfig(

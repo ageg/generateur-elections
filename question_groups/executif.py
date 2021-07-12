@@ -54,7 +54,7 @@ def generate_questions(conf):
     for poste in postes:
         file.loc[file[POSTE_VISE].str.contains(pat=f"(?:^{poste}|{postes[poste]})", regex=True), POSTE_VISE] = poste
 
-    applied_posts = file[POSTE_VISE].unique().tolist()
+    applied_posts = [poste for poste in postes if poste in file[POSTE_VISE].unique().tolist()]
 
     for i, poste in enumerate(applied_posts):
         question_code = postes[poste] + conf.session

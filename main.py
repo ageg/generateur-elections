@@ -3,7 +3,7 @@ import os
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
-from question_groups import admin, exec, finissante
+from question_groups import admin, executif, finissante
 from models.survey import Survey
 
 from config import config
@@ -30,7 +30,7 @@ sousquestions = []
 
 for i, group in enumerate(config.groups):
     if group.type == "exec":
-        group, question = exec.generate_questions(group)
+        group, question = executif.generate_questions(group)
         groups.append(group)
         questions.extend(question)
 
