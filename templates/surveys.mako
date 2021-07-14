@@ -62,7 +62,7 @@
     <sid><![CDATA[172244]]></sid>
     <admin><![CDATA[${survey_options.admin}]]></admin>
     <expires><![CDATA[${survey_options.expires}]]></expires>
-    <adminemail><![CDATA[elections@ageg.ca]]></adminemail>
+    <adminemail><![CDATA[${survey_options.admin_email}]]></adminemail>
     <anonymized><![CDATA[Y]]></anonymized>
     <faxto/>
     <format><![CDATA[G]]></format>
@@ -89,7 +89,7 @@
     <assessments><![CDATA[N]]></assessments>
     <usecaptcha><![CDATA[N]]></usecaptcha>
     <usetokens><![CDATA[N]]></usetokens>
-    <bounce_email><![CDATA[elections@ageg.ca]]></bounce_email>
+    <bounce_email><![CDATA[${survey_options.admin_email}]]></bounce_email>
     <emailresponseto/>
     <emailnotificationto/>
     <tokenlength><![CDATA[15]]></tokenlength>

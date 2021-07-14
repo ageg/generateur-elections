@@ -6,26 +6,154 @@
 # add error parsing module
 # add file with constants?
 # parse multiple semesters in one file
+# image name
+
+# survey settings
 admin: "Yves-Alexandre Beebe"
+admin_email: "elections@ageg.ca"
 # format to respect -> year-month-day hour:minute:second
 expiry: "2021-07-16 23:59:59"
-expiry_text: "vendredi le 16 juillet 2021 à minuit"
-type: "l'AGEG"
-session: "été 2021"
-title: "Élection AGEG E21"
-comity: "le comité exécutif et le conseil d'administration"
-comity_session: "automne 2021 et l'hiver 2022"
+# survey id -> sid?
+
+# survey question groups
 groups:
   - type: "exec"
-    input: "exec_a21_2.csv"
+    file: "exec_a21_2.csv"
     session: "A21"
     unused_posts: ["VPDD", "VPAU"]
   - type: "exec"
-    input: "exec_h22.csv"
+    file: "exec_h22.csv"
     session: "H22"
   - type: "admin"
-    input: "admin_a21_2.csv"
+    file: "admin_a21_2.csv"
     session: "A21"
   - type: "admin"
-    input: "admin_h22.csv"
+    file: "admin_h22.csv"
     session: "H22"
+
+# survey text
+expiry_text: "vendredi le 16 juillet 2021 à minuit"
+type: "l'AGEG"
+semester: "été 2021"
+comity: "le comité exécutif et le conseil d'administration"
+comity_semester: "automne 2021 et l'hiver 2022"
+title: "Élection AGEG E21"
+description: "Élections de {conf['type']} pour {conf['comity']}"
+welcome_text: >
+  Bonjour,<br />\n
+  <br />\n
+
+
+  C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les
+  élections des {conf['comity']} de {conf['type']} pour l'{conf['comity_session']}.<br />\n
+  <br />\n
+
+
+  L'Association générale étudiante en génie est une association qui défend les droits de ses membres et
+  offre des services à sa communauté par le biais de personnes représentantes issues de ses membres. Tout
+  au long de leur mandat, ces représentants seront appelés à se prononcer au nom de votre association et
+  donc en votre nom. Il est donc important que vous fassiez confiance en ces gens et que vous leur
+  accordiez votre vote seulement si vous leur faites confiance de bien vous représenter.<br />\n
+  <br />\n
+
+
+  Les réponses aux questions sont anonymes et il n'est pas possible de voter plus d'une fois. Nous vous
+  invitons donc à voter selon vos valeurs et vos convictions et non par rapport à la réaction de vos amis
+  ou collègues.<br />\n
+  <br />\n
+
+
+  Le vote sera ouvert jusqu'à {conf['expiry_text']}.<br />\n
+  <br />\n
+
+
+  Je vous remercie de votre participation et de votre confiance rénouvelée en notre association étudiante,
+  <br />\n
+
+
+  <strong>{ADMINNAME}<br />\n
+
+  Directeurs d'élections, session d'{conf['session']}</strong>
+end_text: >
+  Merci d'avoir participé et bonne journée
+email_invite_subject: "Élections de {conf['type']} - {conf['comity_session']}"
+email_invite_content: >
+  <html>\n
+  <head>\n
+  <title></title>\n
+  </head>\n
+  <body>\n
+  <p>Bonjour {FIRSTNAME},<br />\n
+  <br />\n
+  Vous êtes par la présente invité(e) à inscrire votre vote pour {conf['comity']} de {conf['type']}.</p>\n\n
+  <p>Pour participer, veuillez cliquer sur le lien ci-dessous:<br />\n
+  {SURVEYURL}<br />\n
+  <br />\n
+  Merci de votre temps,<br />\n
+  {ADMINNAME} ({ADMINEMAIL})</p>\n
+  </body>\n
+  </html>\n
+email_reminder_subject: "Rappel pour les élections de {conf['type']}"
+email_reminder_content: >
+  <html>\n
+  <head>\n
+  <title></title>\n
+  </head>\n
+  <body>\n
+  <p>Bonjour {FIRSTNAME},<br />\n
+  <br />\n
+  Vous avez été invité(e) à inscrire votre vote pour {conf['comity']} de {conf['type']}.
+  <br />\n
+  <br />\n
+  Nous avons pris en compte que vous n'avez pas encore complété le questionnaire, et nous vous rappelons
+  que celui-ci est toujours disponible si vous souhaitez participer. Vous avez jusqu'à {conf['expiry_text']}
+  pour voter.<br />\n
+  <br />\n
+  Pour participer, veuillez cliquer sur le lien ci-dessous:<br />\n
+  {SURVEYURL}</p>\n\n
+  <p><br />\n
+  Merci de votre temps,<br />\n
+  {ADMINNAME} ({ADMINEMAIL})</p>\n
+  </body>\n
+  </html>\n
+
+
+# script settings
+
+
+
+#TMP to cleanup later
+#from collections import namedtuple
+#
+#SurveyConfig = namedtuple("SurveyConfig",
+#                          ["admin", "expiry", "expiry_text", "session", "type", "title", "comity", "comity_session",
+#                           "groups"])
+#GroupConfig = namedtuple("GroupConfig", ["type", "input", "session", "unused_posts"])
+#
+#config = SurveyConfig(
+#    admin="Yves-Alexandre Beebe",
+#    expiry="2021-07-16 23:59:59",  # format to respect -> year-month-day hour:minute:second
+#    expiry_text="vendredi le 16 juillet 2021 à minuit",
+#    type="l'AGEG",
+#    session="été 2021",
+#    title="Élection AGEG E21",
+#    comity="le comité exécutif et le conseil d'administration",
+#    comity_session="automne 2021 et l'hiver 2022",
+#    groups=[GroupConfig("exec", "exec_a21_2.csv", "A21", ["VPAU","VPDD"]),  # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
+#            GroupConfig("exec", "exec_h22.csv", "H22", []),
+#            GroupConfig("admin", "admin_a21_2.csv", "A21", []),
+#            GroupConfig("admin", "admin_h22.csv", "H22", []), ]
+#            # GroupConfig("admin", "admin_annuel.csv", "Annuel", []), ]
+#)
+#
+## config = SurveyConfig(
+##     admin="Yves-Alexandre Beebe",
+##     expiry="2021-04-07 23:59:59",  # format to respect -> year-month-day hour:minute:second
+##     expiry_text="mercredi le 7 avril 2021 à minuit",
+##     type="la finissante",
+##     session="hiver 2021",
+##     title="Élection finissante H21",
+##     comity="le comité exécutif",
+##     comity_session="été 2021",
+##     groups=[GroupConfig("finissante", "finissante_e21.csv", "E21", [])]
+## )
