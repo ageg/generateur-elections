@@ -8,30 +8,19 @@ from mako.lookup import TemplateLookup
 from question_groups import admin, executif, finissante
 from models.survey import Survey
 
+from config import validate_config
+
 stream = open("config.yaml", 'r')
 config = yaml.safe_load(stream)
 
-for group in config['groups']:
-    if not os.path.isfile(f"input/{group['input']}"):
-        print(f"Check if {group['input']} is present in input directory")
-        exit()  # TODO error code?
-
-if config['type'] == "l'AGEG" and not all([g['type'] == "admin" or g['type'] == "exec" for g in config['groups']]):
-    print(f"Elections for l'AGEG must only contain exec or admin question groups, see GroupConfig in config.py")
-    exit()
-
-if config['type'] == "la finissante" and (
-        len(config['groups']) > 1 or not all([g['type'] == "finissante" for g in config['groups']])
-):
-    print(f"Elections for la finissante must only contain one finissante question group, see GroupConfig in config.py")
-    exit()
+validate_config(config)
 
 print(f"JOB START ! Starting generation for {config['type']}!")
 groups = []
 questions = []
 sousquestions = []
 
-for i, group in enumerate(config['groups']):
+for group in config['groups']:
     if group['type'] == "exec":
         group, question = executif.generate_questions(group)
         groups.append(group)

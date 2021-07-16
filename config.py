@@ -1,9 +1,48 @@
+import os
 
-# validate config func
 
-# validate input file
+def validate_dir(dir):
+    if not os.path.isdir(dir):
+        print(f"{dir} is not present, creating {dir} directory")
+        os.makedirs(dir)
 
-#validate config groups
+
+def validate_input_file(file):
+    if not os.path.isfile(f"input/{file}"):
+        print(f"Check if {file} is present in input directory")
+        exit()  # TODO error code?
+
+
+def validate_question_groups(groups):
+    if any(group['type'] not in ['exec','admin','finissante'] for group in groups):
+        invalid_groups = [group for group in groups if group['type']]
+        print(f"Invalid group types present")
+        for group in invalid_groups:
+            print(f"discarding group of type {group['type']}")
+        groups.remove(invalid_groups)
+    for group in groups:
+        validate_input_file(group['file'])
+
+
+def validate_survey_config(conf):
+    if conf['type'] == "l'AGEG" and not all(g['type'] == "admin" or g['type'] == "exec" for g in conf['groups']):
+        print(f"Elections for l'AGEG must only contain exec or admin question groups, see GroupConfig in config.py")
+        exit()
+
+    if conf['type'] == "la finissante" and (
+            len(conf['groups']) > 1 or not all(g['type'] == "finissante" for g in conf['groups'])
+    ):
+        print(
+            f"Elections for la finissante must only contain one finissante question group, see GroupConfig in config.py")
+        exit()
+
+
+def validate_config(conf):
+    validate_dir("input")
+    validate_dir("output")
+    validate_question_groups(conf['groups'])
+    validate_survey_config(conf)
+
 
 # validate file columns
 
@@ -11,3 +50,9 @@
 
 # fill placeholder references
 # list of text options to check
+# set(re.findall(r"conf\['([^\s]*)'\]",text))
+# for sub in subs:
+#     text = text.replace(f"{{conf['{sub}']}}", config[sub])
+#     print(f"{{conf['{sub}']}}")
+#     print(config[sub])
+
