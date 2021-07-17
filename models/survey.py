@@ -8,8 +8,8 @@ class Survey:
         if any(group['unused_posts'] for group in conf['groups'] if group['type'] == "exec"):
             postes_vacant = ""
             for group in conf['groups']:
-                if group['type'] == "exec":
-                    postes_vacant += f"\nLes postes vacant pour le conseil exécutif {group['session']} sont:\n<br />"
+                if group['type'] == "exec" and group['unused_posts']:
+                    postes_vacant += f"\nLes postes vacant pour le conseil exécutif {group['semester']} sont:\n<br />"
                     for post in group['unused_posts']:
                         postes_vacant += f"La {post}\n<br />"
             self.end_text = (

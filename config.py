@@ -1,4 +1,5 @@
 import os
+from pandas import read_csv
 
 
 def validate_dir(dir):
@@ -13,8 +14,16 @@ def validate_input_file(file):
         exit()  # TODO error code?
 
 
+def validate_columns(group):
+    from constants import file_columns
+    for col in file_columns[group['type']]:
+        if col not in group['df'].columns:
+            print(f"Column \"{col}\" not in {group['file']}")
+            exit()
+
+
 def validate_question_groups(groups):
-    if any(group['type'] not in ['exec','admin','finissante'] for group in groups):
+    if any(group['type'] not in ['exec', 'admin', 'finissante'] for group in groups):
         invalid_groups = [group for group in groups if group['type']]
         print(f"Invalid group types present")
         for group in invalid_groups:
@@ -22,6 +31,8 @@ def validate_question_groups(groups):
         groups.remove(invalid_groups)
     for group in groups:
         validate_input_file(group['file'])
+        group['df'] = read_csv(f"input/{group['file']}")
+        validate_columns(group)
 
 
 def validate_survey_config(conf):
@@ -50,9 +61,10 @@ def validate_config(conf):
 
 # fill placeholder references
 # list of text options to check
-# set(re.findall(r"conf\['([^\s]*)'\]",text))
-# for sub in subs:
-#     text = text.replace(f"{{conf['{sub}']}}", config[sub])
-#     print(f"{{conf['{sub}']}}")
-#     print(config[sub])
-
+def fill_placehoders(conf):
+    import re
+    from constants import text_elements
+    for text in text_elements:
+        placehoders = set(re.findall(r"conf\[([^\s]*)\]", conf[text]))
+        for ph in placehoders:
+            conf[text] = conf[text].replace(f"conf[{ph}]", conf[ph])

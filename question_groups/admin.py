@@ -5,38 +5,26 @@ from models.option import Option
 from models.question import Question
 from models.subquestion import Subquestion
 from models.answer import Answer
-
-CONCENTRATION = 'Concentration'
-PROMOTION = 'Promotion'
-NOM_USUEL = 'Nom usuel'
-PHOTO = 'Photo'
-TEXTE_DESCRIPTIF = 'Texte descriptif'
+from constants import CONCENTRATION, PROMOTION, NOM_USUEL, PHOTO, TEXTE_DESCRIPTIF
 
 
-def generate_questions(conf):
-    file = read_csv(f"input/{conf['input']}")
-
-    name = f"Conseil d'administration {conf['session']}"
-    description = "Vote de confiance pour les postes saisonniers au conseil d'administration de l'AGEG."
+def generate_questions(group_conf):
+    df = group_conf['df']
+    name = f"Conseil d'administration {group_conf['semester']}"
+    if group_conf['semester'] == 'Annuel':
+        description = "Vote de confiance pour les postes annuels au conseil d'administration de l'AGEG."
+        code = f"CA{group_conf['semester']}"
+        title = "Qui voulez-vous comme administrateurs annuels de l'AGEG?"
+    else:
+        description = "Vote de confiance pour les postes saisonniers au conseil d'administration de l'AGEG."
+        code = "CAS" + group_conf['semeseter']
+        title = "Qui voulez-vous comme administrateurs saisonniers de l'AGEG?"
     group = Group(name, description)
 
-    columns = {
-        CONCENTRATION: -1,
-        PROMOTION: -1,
-        NOM_USUEL: -1,
-        PHOTO: -1,
-        TEXTE_DESCRIPTIF: -1
-    }
-
-    for col in columns.keys():
-        if col not in file.columns:
-            print(f"Column \"{col}\" not in {conf['input']}")
-            exit()
-
     question_admin = Question(
-        code="CAS" + conf['session'],
+        code=code,
         gid=group.gid,
-        title="Qui voulez-vous comme administrateurs saisonniers de l'AGEG?",
+        title=title,
         qtype='F'
     )
 
@@ -45,41 +33,26 @@ def generate_questions(conf):
     question_admin.add_answer(Answer(qid=question_admin.qid, value="Non confiance", code="A3", order=3))
 
     sous_questions = []
-    for index, candidat in file.iterrows():
-        code = f"SQ{index + 1:02}"
+    for index, candidat in df.iterrows():
         subquestion = Subquestion(
             parent=question_admin.qid,
             gid=question_admin.gid,
-            code=code,
+            code=f"SQ{index + 1:02}",
             value=candidat[NOM_USUEL],
-            order=index, qtype='T'
+            order=index,
+            qtype='T'
         )
         sous_questions.append(subquestion)
 
-    options = []
-
-    for index, candidat in file.iterrows():
-        nom = candidat[NOM_USUEL]
-        concentration = candidat[CONCENTRATION]
-        promotion = candidat[PROMOTION]
-
-        description = f"<p><strong>{nom} ({concentration}, {promotion})</strong></p>"
-        for line in candidat[TEXTE_DESCRIPTIF].split('\n'):
-            description += f"<p>{line}</p>\n"
-
-        options.append(
+        question_admin.add_option(
             Option(
-                value=candidat[NOM_USUEL],
-                code=f"A{index + 1}",
+                nom=candidat[NOM_USUEL],
+                promotion=candidat[PROMOTION],
+                concentration=candidat[CONCENTRATION],
                 order=index,
-                description=description,
+                description=candidat[TEXTE_DESCRIPTIF],
                 image=candidat[PHOTO]
             )
         )
-
-    # return options
-
-    for option in options:
-        question_admin.add_option(option)
 
     return group, question_admin, sous_questions

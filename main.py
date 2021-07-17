@@ -8,12 +8,14 @@ from mako.lookup import TemplateLookup
 from question_groups import admin, executif, finissante
 from models.survey import Survey
 
-from config import validate_config
+from config import validate_config, fill_placehoders
 
 stream = open("config.yaml", 'r')
 config = yaml.safe_load(stream)
 
 validate_config(config)
+fill_placehoders(config)
+
 
 print(f"JOB START ! Starting generation for {config['type']}!")
 groups = []
@@ -22,7 +24,7 @@ sousquestions = []
 
 for group in config['groups']:
     if group['type'] == "exec":
-        group, question = executif.generate_questions(group)
+        group, question = executif.generate_questions(config, group)
         groups.append(group)
         questions.extend(question)
     elif group['type'] == "admin":
@@ -49,7 +51,8 @@ survey = ""
 if config['type'] == "l'AGEG":
     survey = mytemplate.render(
         survey_options=survey_options,
-        groups=groups, questions=questions,
+        groups=groups,
+        questions=questions,
         subquestions=sousquestions,
         withAttributes=False
     )
@@ -61,9 +64,7 @@ else:
     print("This should never print")
     exit()  # should never happen
 
-mypath = "output"
-if not os.path.isdir(mypath):
-    os.makedirs(mypath)
+
 survey_file = open(f"output/{output_file}", "w+b")
 survey_file.write(survey)
 survey_file.close()

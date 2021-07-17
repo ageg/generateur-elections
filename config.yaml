@@ -1,10 +1,6 @@
 ---
 #Todo config variables in english, text in french
-# move text to config
 # modularize functions
-# move settings to config
-# add error parsing module
-# add file with constants?
 # parse multiple semesters in one file
 # image name
 
@@ -19,17 +15,17 @@ expiry: "2021-07-16 23:59:59"
 groups:
   - type: "exec"
     file: "exec_a21_2.csv"
-    session: "A21"
+    semester: "A21"
     unused_posts: ["VPDD", "VPAU"]
   - type: "exec"
     file: "exec_h22.csv"
-    session: "H22"
+    semester: "H22"
   - type: "admin"
     file: "admin_a21_2.csv"
-    session: "A21"
+    semester: "A21"
   - type: "admin"
     file: "admin_h22.csv"
-    session: "H22"
+    semester: "H22"
 
 # survey text
 expiry_text: "vendredi le 16 juillet 2021 à minuit"
@@ -38,14 +34,14 @@ semester: "été 2021"
 comity: "le comité exécutif et le conseil d'administration"
 comity_semester: "automne 2021 et l'hiver 2022"
 title: "Élection AGEG E21"
-description: "Élections de {conf['type']} pour {conf['comity']}"
+description: "Élections de conf[type] pour conf[comity]"
 welcome_text: >
   Bonjour,<br />\n
   <br />\n
 
 
   C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les
-  élections des {conf['comity']} de {conf['type']} pour l'{conf['comity_session']}.<br />\n
+  élections des conf[comity] de conf[type] pour l'conf[comity_semester].<br />\n
   <br />\n
 
 
@@ -63,7 +59,7 @@ welcome_text: >
   <br />\n
 
 
-  Le vote sera ouvert jusqu'à {conf['expiry_text']}.<br />\n
+  Le vote sera ouvert jusqu'à conf[expiry_text].<br />\n
   <br />\n
 
 
@@ -73,10 +69,10 @@ welcome_text: >
 
   <strong>{ADMINNAME}<br />\n
 
-  Directeurs d'élections, session d'{conf['session']}</strong>
+  Directeurs d'élections, session d'conf[semester]</strong>
 end_text: >
   Merci d'avoir participé et bonne journée
-email_invite_subject: "Élections de {conf['type']} - {conf['comity_session']}"
+email_invite_subject: "Élections de conf[type] - conf[comity_semester]"
 email_invite_content: >
   <html>\n
   <head>\n
@@ -85,7 +81,7 @@ email_invite_content: >
   <body>\n
   <p>Bonjour {FIRSTNAME},<br />\n
   <br />\n
-  Vous êtes par la présente invité(e) à inscrire votre vote pour {conf['comity']} de {conf['type']}.</p>\n\n
+  Vous êtes par la présente invité(e) à inscrire votre vote pour conf[comity] de conf[type].</p>\n\n
   <p>Pour participer, veuillez cliquer sur le lien ci-dessous:<br />\n
   {SURVEYURL}<br />\n
   <br />\n
@@ -93,7 +89,7 @@ email_invite_content: >
   {ADMINNAME} ({ADMINEMAIL})</p>\n
   </body>\n
   </html>\n
-email_reminder_subject: "Rappel pour les élections de {conf['type']}"
+email_reminder_subject: "Rappel pour les élections de conf[type]"
 email_reminder_content: >
   <html>\n
   <head>\n
@@ -102,11 +98,11 @@ email_reminder_content: >
   <body>\n
   <p>Bonjour {FIRSTNAME},<br />\n
   <br />\n
-  Vous avez été invité(e) à inscrire votre vote pour {conf['comity']} de {conf['type']}.
+  Vous avez été invité(e) à inscrire votre vote pour conf[comity] de conf[type].
   <br />\n
   <br />\n
   Nous avons pris en compte que vous n'avez pas encore complété le questionnaire, et nous vous rappelons
-  que celui-ci est toujours disponible si vous souhaitez participer. Vous avez jusqu'à {conf['expiry_text']}
+  que celui-ci est toujours disponible si vous souhaitez participer. Vous avez jusqu'à conf[expiry_text]
   pour voter.<br />\n
   <br />\n
   Pour participer, veuillez cliquer sur le lien ci-dessous:<br />\n
@@ -119,7 +115,40 @@ email_reminder_content: >
 
 
 # script settings
+postes_exec:
+  PREZ: "Présidence"
+  VPAL: "Vice-Présidence aux Affaires Légales"
+  VPAI: "Vice-Présidence aux Affaires Internes"
+  VPAF: "Vice-Présidence aux Affaires Financières"
+  VPAP: "Vice-Présidence aux Affaires Pédagogiques"
+  VPAS: "Vice-Présidence aux Affaires Sociales"
+  VPAU: "Vice-Présidence aux Affaires Universitaires"
+  VPAX: "Vice-Présidence aux Activités Extracurriculaires"
+  VPIC: "Vice-Présidence à l'Image et aux Communications"
+  VPDD: "Vice-Présidence au Développement Durable"
+  VPEX: "Vice-Présidence aux Affaires Externes"
+  VPCS: "Vice-Présidence aux Cycles Supérieurs"
 
+postes_finissante:
+    - "Présidence"
+    - "Vice-Présidence"
+    - "Trésorerie"
+    - "Secrétariat"
+    - "Webmestre"
+    - "Direction 5@8"
+    - "Direction Affaires Sociales"
+    - "Direction Bal / Voyage"
+    - "Direction Souvenirs"
+    - "Direction Casino / Jonc"
+    - "Direction Journée Carrière"
+    - "Sous-Direction Bière"
+    - "Sous-Direction Fort"
+    - "Sous-Direction Caisse"
+    - "Sous-Direction Repas"
+    - "Sous-Direction Radio"
+    - "Sous-Direction Animation"
+    - "Sous-Direction Sécurité"
+    - "Sous-Direction Photographie"
 
 
 #TMP to cleanup later
