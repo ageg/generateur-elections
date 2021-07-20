@@ -1,4 +1,5 @@
 text_elements = [
+    "description",
     "welcome_text",
     "email_invite_subject",
     "email_invite_content",

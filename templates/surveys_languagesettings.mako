@@ -1,46 +1,47 @@
- <%page args="survey_options"/><surveys_languagesettings>
-  <fields>
-   <fieldname>surveyls_survey_id</fieldname>
-   <fieldname>surveyls_language</fieldname>
-   <fieldname>surveyls_title</fieldname>
-   <fieldname>surveyls_description</fieldname>
-   <fieldname>surveyls_welcometext</fieldname>
-   <fieldname>surveyls_endtext</fieldname>
-   <fieldname>surveyls_url</fieldname>
-   <fieldname>surveyls_urldescription</fieldname>
-   <fieldname>surveyls_email_invite_subj</fieldname>
-   <fieldname>surveyls_email_invite</fieldname>
-   <fieldname>surveyls_email_remind_subj</fieldname>
-   <fieldname>surveyls_email_remind</fieldname>
-   <fieldname>surveyls_email_register_subj</fieldname>
-   <fieldname>surveyls_email_register</fieldname>
-   <fieldname>surveyls_email_confirm_subj</fieldname>
-   <fieldname>surveyls_email_confirm</fieldname>
-   <fieldname>surveyls_dateformat</fieldname>
-   <fieldname>surveyls_attributecaptions</fieldname>
-   <fieldname>email_admin_notification_subj</fieldname>
-   <fieldname>email_admin_notification</fieldname>
-   <fieldname>email_admin_responses_subj</fieldname>
-   <fieldname>email_admin_responses</fieldname>
-   <fieldname>surveyls_numberformat</fieldname>
-   <fieldname>attachments</fieldname>
-  </fields>
-  <rows>
-   <row>
-    <surveyls_survey_id><![CDATA[172244]]></surveyls_survey_id>
-    <surveyls_language><![CDATA[fr]]></surveyls_language>
-    <surveyls_title><![CDATA[${survey_options.title}]]></surveyls_title>
-    <surveyls_description><![CDATA[${survey_options.description}]]></surveyls_description>
-    <surveyls_welcometext><![CDATA[${survey_options.welcome_text}]]></surveyls_welcometext>
-    <surveyls_endtext><![CDATA[${survey_options.end_text}]]></surveyls_endtext>
-    <surveyls_url><![CDATA[https://www.ageg.ca]]></surveyls_url>
-    <surveyls_urldescription/>
-    <surveyls_email_invite_subj><![CDATA[${survey_options.email_invite_subject}]]></surveyls_email_invite_subj>
-    <surveyls_email_invite><![CDATA[${survey_options.email_invite_body}]]></surveyls_email_invite>
-    <surveyls_email_remind_subj><![CDATA[${survey_options.email_reminder_subject}]]></surveyls_email_remind_subj>
-    <surveyls_email_remind><![CDATA[${survey_options.email_reminder_body}]]></surveyls_email_remind>
-    <surveyls_email_register_subj><![CDATA[Confirmation d'enregistrement au questionnaire]]></surveyls_email_register_subj>
-    <surveyls_email_register><![CDATA[<html>
+<%page args="survey_options"/>
+    <surveys_languagesettings>
+        <fields>
+            <fieldname>surveyls_survey_id</fieldname>
+            <fieldname>surveyls_language</fieldname>
+            <fieldname>surveyls_title</fieldname>
+            <fieldname>surveyls_description</fieldname>
+            <fieldname>surveyls_welcometext</fieldname>
+            <fieldname>surveyls_endtext</fieldname>
+            <fieldname>surveyls_url</fieldname>
+            <fieldname>surveyls_urldescription</fieldname>
+            <fieldname>surveyls_email_invite_subj</fieldname>
+            <fieldname>surveyls_email_invite</fieldname>
+            <fieldname>surveyls_email_remind_subj</fieldname>
+            <fieldname>surveyls_email_remind</fieldname>
+            <fieldname>surveyls_email_register_subj</fieldname>
+            <fieldname>surveyls_email_register</fieldname>
+            <fieldname>surveyls_email_confirm_subj</fieldname>
+            <fieldname>surveyls_email_confirm</fieldname>
+            <fieldname>surveyls_dateformat</fieldname>
+            <fieldname>surveyls_attributecaptions</fieldname>
+            <fieldname>email_admin_notification_subj</fieldname>
+            <fieldname>email_admin_notification</fieldname>
+            <fieldname>email_admin_responses_subj</fieldname>
+            <fieldname>email_admin_responses</fieldname>
+            <fieldname>surveyls_numberformat</fieldname>
+            <fieldname>attachments</fieldname>
+        </fields>
+        <rows>
+            <row>
+                <surveyls_survey_id><![CDATA[172244]]></surveyls_survey_id>
+                <surveyls_language><![CDATA[fr]]></surveyls_language>
+                <surveyls_title><![CDATA[${survey_options.title}]]></surveyls_title>
+                <surveyls_description><![CDATA[${survey_options.description}]]></surveyls_description>
+                <surveyls_welcometext><![CDATA[${add_br(survey_options.welcome_text)}]]></surveyls_welcometext>
+                <surveyls_endtext><![CDATA[${end_text_option(survey_options)}]]></surveyls_endtext>
+                <surveyls_url><![CDATA[https://www.ageg.ca]]></surveyls_url>
+                <surveyls_urldescription/>
+                <surveyls_email_invite_subj><![CDATA[${survey_options.email_invite_subject}]]></surveyls_email_invite_subj>
+                <surveyls_email_invite><![CDATA[${html_body(survey_options.email_invite_content)}]]></surveyls_email_invite>
+                <surveyls_email_remind_subj><![CDATA[${survey_options.email_reminder_subject}]]></surveyls_email_remind_subj>
+                <surveyls_email_remind><![CDATA[${html_body(survey_options.email_reminder_content)}]]></surveyls_email_remind>
+                <surveyls_email_register_subj><![CDATA[Confirmation d'enregistrement au questionnaire]]></surveyls_email_register_subj>
+                <surveyls_email_register><![CDATA[<html>
 <head>
 	<title></title>
 </head>
@@ -54,8 +55,8 @@ Pour compléter ce questionnaire, cliquez sur le lien suivant :<br />
 Si vous avez des questions à propos de ce questionnaire, ou si vous ne vous êtes pas enregistré pour participer à celui-ci et croyez que ce courriel est une erreur, veuillez contacter {ADMINNAME} à l’adresse {ADMINEMAIL}</body>
 </html>
 ]]></surveyls_email_register>
-    <surveyls_email_confirm_subj><![CDATA[Confirmation de votre participation à notre questionnaire]]></surveyls_email_confirm_subj>
-    <surveyls_email_confirm><![CDATA[<html>
+                <surveyls_email_confirm_subj><![CDATA[Confirmation de votre participation à notre questionnaire]]></surveyls_email_confirm_subj>
+                <surveyls_email_confirm><![CDATA[<html>
 <head>
 	<title></title>
 </head>
@@ -69,9 +70,9 @@ Merci,<br />
 {ADMINNAME}</body>
 </html>
 ]]></surveyls_email_confirm>
-    <surveyls_dateformat><![CDATA[2]]></surveyls_dateformat>
-    <email_admin_notification_subj><![CDATA[Soumission de réponse pour le questionnaire {SURVEYNAME}]]></email_admin_notification_subj>
-    <email_admin_notification><![CDATA[<html>
+                <surveyls_dateformat><![CDATA[2]]></surveyls_dateformat>
+                <email_admin_notification_subj><![CDATA[Soumission de réponse pour le questionnaire {SURVEYNAME}]]></email_admin_notification_subj>
+                <email_admin_notification><![CDATA[<html>
 <head>
 	<title></title>
 </head>
@@ -95,8 +96,8 @@ les réponses suivantes ont été données par le participant :<br />
 {ANSWERTABLE}</body>
 </html>
 ]]></email_admin_notification>
-    <email_admin_responses_subj><![CDATA[Soumission de réponse pour le questionnaire {SURVEYNAME} avec résultats]]></email_admin_responses_subj>
-    <email_admin_responses><![CDATA[<html>
+                <email_admin_responses_subj><![CDATA[Soumission de réponse pour le questionnaire {SURVEYNAME} avec résultats]]></email_admin_responses_subj>
+                <email_admin_responses><![CDATA[<html>
 <head>
 	<title></title>
 </head>
@@ -121,8 +122,61 @@ les réponses suivantes ont été données par le participant :<br />
 {ANSWERTABLE}</body>
 </html>
 ]]></email_admin_responses>
-    <surveyls_numberformat><![CDATA[1]]></surveyls_numberformat>
-    <attachments><![CDATA[a:0:{}]]></attachments>
-   </row>
-  </rows>
- </surveys_languagesettings>
+                <surveyls_numberformat><![CDATA[1]]></surveyls_numberformat>
+                <attachments><![CDATA[a:0:{}]]></attachments>
+            </row>
+        </rows>
+    </surveys_languagesettings>
+
+<%def name="html_body(text)">
+    <html>
+    <head>
+        <title></title>
+    </head>
+    <body>${add_br(text)}</body>
+    </html>
+</%def>
+
+<%def name="add_br(text)"><%
+        text_array = text.split('\n')
+        nb_lines = len(text_array)
+    %>
+%for i,line in enumerate(text_array):
+    % if "</p>" in line and i < nb_lines-1:
+${line}
+
+    % elif i < nb_lines-1:
+${line}<br />
+    % else:
+${line}
+    % endif
+%endfor
+</%def>
+<%def name="end_text_option(conf)">
+    %if conf.empty_groups:
+        <%
+        text_array = conf.empty_end_text.split('\n')
+        nb_lines = len(text_array)
+        %>
+        %for i,line in enumerate(text_array):
+            %if line == "mako[empty_posts]":
+                %for group in conf.empty_groups:
+                Les postes vacant pour le conseil exécutif ${group} sont:
+                <ul>
+                    %for post in conf.empty_groups[group]:
+                            <li>La ${post}</li>
+                    %endfor
+                </ul>
+                <br />
+                %endfor
+            %elif i < nb_lines-1:
+                ${line}
+                <br />
+            %else:
+                ${line}
+            %endif
+        %endfor
+    %else:
+    ${add_br(conf.filled_end_text)}
+    %endif
+</%def>

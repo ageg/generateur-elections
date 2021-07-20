@@ -4,7 +4,7 @@
     <parent_qid><![CDATA[0]]></parent_qid>
     <sid><![CDATA[544188]]></sid>
     <gid><![CDATA[${question.gid}]]></gid>
-    <type><![CDATA[${question.qtype}]]></type>
+    <type><![CDATA[${question.type}]]></type>
     <title><![CDATA[${question.code}]]></title>
     <question><![CDATA[
         <%include file="question_description.mako" args="title=question.title, options=question.options"/>

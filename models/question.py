@@ -14,7 +14,7 @@ class Question:
         self.options = []
         self.title = title
         self.attributes = attributes
-        self.qtype = qtype
+        self.type = qtype
         self.order = order
         if qtype == "F":
             self.help = 'Veuillez voter "Oui", "Non", "Non confiance" ou "Sans réponse" pour chaque candidat.'

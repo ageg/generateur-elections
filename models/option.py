@@ -1,27 +1,17 @@
 class Option:
     def __init__(self, nom, order, description, image, promotion="", concentration=""):
-        self.nom = nom
+        self.value = nom
         self.promotion = promotion
         self.concentration = concentration
         self.order = order
         self.code = f"A{self.order + 1}"
         self.image = image
-        self.description = ""
-        self.set_description(description)
+        self.description = description
 
     def set_order(self, order):
         self.order = order
         self.code = f"A{order+1}"
-        
-    def set_description(self, description):
-        if self.concentration and self.promotion:
-            self.description = f"<p><strong>{self.nom} ({self.concentration}, {self.promotion})</strong></p>"
-        elif self.concentration:
-            self.description = f"<p><strong>{self.nom} ({self.concentration})</strong></p>"
-        else:
-            self.description = f"<p><strong>{self.nom}</strong></p>"
-        for line in description.split('\n'):
-            self.description += f"<p>{line}</p>\n"
+
 
     @staticmethod
     def add_chaise(order):
@@ -37,4 +27,4 @@ class Option:
 
 
     def __repr__(self):
-        return f"<Candidat name={self.nom} concentration={self.code}>"
+        return f"<Candidat name={self.value} concentration={self.code}>"

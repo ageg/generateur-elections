@@ -56,7 +56,7 @@ if config['type'] == "l'AGEG":
         subquestions=sousquestions,
         withAttributes=False
     )
-    output_file = "ageg-survey.lss"
+    output_file = "ageg-survey-test.lss"
 elif config['type'] == "la finissante":
     survey = mytemplate.render(groups=groups, questions=questions, subquestions=None, withAttributes=True)
     output_file = "finissante-survey.lss"

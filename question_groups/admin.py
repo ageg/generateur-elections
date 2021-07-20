@@ -17,7 +17,7 @@ def generate_questions(group_conf):
         title = "Qui voulez-vous comme administrateurs annuels de l'AGEG?"
     else:
         description = "Vote de confiance pour les postes saisonniers au conseil d'administration de l'AGEG."
-        code = "CAS" + group_conf['semeseter']
+        code = "CAS" + group_conf['semester']
         title = "Qui voulez-vous comme administrateurs saisonniers de l'AGEG?"
     group = Group(name, description)
 

@@ -9,7 +9,7 @@ class Subquestion:
         self.code = code
         self.value = value
         self.order = order
-        self.qtype = qtype
+        self.type = qtype
         self.answers = []
     
     def add_answer(self, answer):
