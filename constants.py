@@ -8,12 +8,17 @@ text_elements = [
 ]
 CONCENTRATION = 'Concentration'
 PROMOTION = 'Promotion'
-NOM_USUEL = 'Nom usuel' #NOM_USUEL = 'Nom Complet'
+NOM_USUEL = 'Nom usuel'  # NOM_USUEL = 'Nom Complet'
 PHOTO = 'Photo'
 TEXTE_DESCRIPTIF = 'Texte descriptif'
+TEXTES_DESCRIPTIFS = [
+    'Texte descriptif (Poste #1)',
+    'Texte descriptif (Poste #2)',
+    'Texte descriptif (Poste #3)'
+]
 POSTE_VISE = 'Poste visé '
 POSTES_VISES = [
-    'Poste Visé #1',
+    'Poste visé #1',
     'Poste visé #2',
     'Poste visé #3'
 ]
@@ -40,9 +45,11 @@ file_columns = {
         CONCENTRATION,
         NOM_USUEL,
         PHOTO,
-        TEXTE_DESCRIPTIF,
         POSTES_VISES[0],
+        TEXTES_DESCRIPTIFS[0],
         POSTES_VISES[1],
-        POSTES_VISES[2]
+        TEXTES_DESCRIPTIFS[1],
+        POSTES_VISES[2],
+        TEXTES_DESCRIPTIFS[2],
     ]
 }

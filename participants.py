@@ -2,7 +2,7 @@ import pandas as pd
 import openpyxl
 import unidecode
 
-df = pd.read_excel("input/AGEGListeComplèteE21.xlsx", header=7, usecols="B:F")
+df = pd.read_excel("input/Membres promo 21 avril 2021.xlsx", header=8, usecols="B:F")
 participants = pd.DataFrame(columns=["email", "lastname", "firstname"], index=df.index)
 participants["lastname"] = df["nom_choisi"]
 participants["firstname"] = df["prenom_choisi"]

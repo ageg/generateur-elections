@@ -8,32 +8,35 @@
 admin: "Yves-Alexandre Beebe"
 admin_email: "elections@ageg.ca"
 # format to respect -> year-month-day hour:minute:second
-expiry: "2021-07-16 23:59:59"
+expiry: "2021-08-04 23:59:59"
 # survey id -> sid?
 
 # survey question groups
 groups:
-  - type: "exec"
-    file: "exec_a21_2.csv"
-    semester: "A21"
-    unused_posts: ["VPDD", "VPAU"]
-  - type: "exec"
-    file: "exec_h22.csv"
+  - type: "finissante"
+    file : "Candidatures au conseil exécutif de la promo64 - H22(1-20).xlsx"
     semester: "H22"
-  - type: "admin"
-    file: "admin_a21_2.csv"
-    semester: "A21"
-  - type: "admin"
-    file: "admin_h22.csv"
-    semester: "H22"
+#  - type: "exec"
+#    file: "exec_a21_2.csv"
+#    semester: "A21"
+#    unused_posts: ["VPDD", "VPAU"]
+#  - type: "exec"
+#    file: "exec_h22.csv"
+#    semester: "H22"
+#  - type: "admin"
+#    file: "admin_a21_2.csv"
+#    semester: "A21"
+#  - type: "admin"
+#    file: "admin_h22.csv"
+#    semester: "H22"
 
 # survey text
-expiry_text: "vendredi le 16 juillet 2021 à minuit"
-type: "l'AGEG"
-semester: "été 2021"
-comity: "le comité exécutif et le conseil d'administration"
-comity_semester: "automne 2021 et l'hiver 2022"
-title: "Élection AGEG E21"
+expiry_text: "mercredi le 04 aout 2021 à minuit"
+type: "la finissante"
+semester: "hiver 2022"
+comity: "le comité éxecutif"
+comity_semester: "l'hiver 2022"
+title: "Élection Finissante H22"
 description: "Élections de conf[type] pour conf[comity]"
 welcome_text: >-
   Bonjour,
@@ -41,13 +44,6 @@ welcome_text: >-
 
   C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les
   élections des conf[comity] de conf[type] pour l'conf[comity_semester].
-
-
-  L'Association générale étudiante en génie est une association qui défend les droits de ses membres et
-  offre des services à sa communauté par le biais de personnes représentantes issues de ses membres. Tout
-  au long de leur mandat, ces représentants seront appelés à se prononcer au nom de votre association et
-  donc en votre nom. Il est donc important que vous fassiez confiance en ces gens et que vous leur
-  accordiez votre vote seulement si vous leur faites confiance de bien vous représenter.
 
 
   Les réponses aux questions sont anonymes et il n'est pas possible de voter plus d'une fois. Nous vous
@@ -63,6 +59,11 @@ welcome_text: >-
   <strong>{ADMINNAME}
 
   Directeurs d'élections, session d'conf[semester]</strong>
+#   L'Association générale étudiante en génie est une association qui défend les droits de ses membres et
+#  offre des services à sa communauté par le biais de personnes représentantes issues de ses membres. Tout
+#  au long de leur mandat, ces représentants seront appelés à se prononcer au nom de votre association et
+#  donc en votre nom. Il est donc important que vous fassiez confiance en ces gens et que vous leur
+#  accordiez votre vote seulement si vous leur faites confiance de bien vous représenter.
 
 empty_end_text: >-
   Des postes resteront vacants suite à cette élection régulière.
@@ -73,11 +74,13 @@ empty_end_text: >-
 
   Merci d'avoir participé et bonne journée
 filled_end_text: >-
-  Tous les postes seront comblés suite à cette élection régulière. Si vous desirer vous impliquer, nous
-  vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.
+  Tous les postes seront comblés suite à cette élection régulière. Si vous désirer vous impliquer, nous
+  vous invitons à contacter vos représentant de promo.
 
 
   Merci d'avoir participé et bonne journée
+#Si vous desirer vous impliquer, nous
+#  vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.
 email_invite_subject: "Élections de conf[type] - conf[comity_semester]"
 email_invite_content: >-
   <p>Bonjour {FIRSTNAME},
@@ -141,12 +144,12 @@ postes_finissante:
     - "Direction Affaires Sociales"
     - "Direction Bal / Voyage"
     - "Direction Souvenirs"
-    - "Direction Casino / Jonc"
+    - "Direction Casino/Jonc"
     - "Direction Journée Carrière"
     - "Sous-Direction Bière"
     - "Sous-Direction Fort"
     - "Sous-Direction Caisse"
-    - "Sous-Direction Repas"
+    - "Sous-Direction Bouffe"
     - "Sous-Direction Radio"
     - "Sous-Direction Animation"
     - "Sous-Direction Sécurité"

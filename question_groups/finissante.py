@@ -1,6 +1,5 @@
-from pandas import read_csv
-
-from constants import CONCENTRATION, NOM_USUEL, PHOTO, TEXTE_DESCRIPTIF, POSTES_VISES
+from pandas import isna
+from constants import CONCENTRATION, NOM_USUEL, PHOTO, TEXTES_DESCRIPTIFS, POSTES_VISES
 from models.attribute import Attribute
 from models.group import Group
 from models.option import Option
@@ -33,14 +32,16 @@ def generate_questions(conf,group_conf):
         questions_map[poste] = question
 
     for _, candidat in df.iterrows():
-        for POSTE in POSTES_VISES:
+        for i,POSTE in enumerate(POSTES_VISES):
             poste = candidat[POSTE]
+            if isna(candidat[TEXTES_DESCRIPTIFS[i]]):
+                candidat[TEXTES_DESCRIPTIFS[i]] = ""
             if isinstance(poste, str):
                 option = Option(
                     nom=candidat[NOM_USUEL],
                     concentration=candidat[CONCENTRATION],
                     order=questions_map[poste].answer_count(),
-                    description=candidat[TEXTE_DESCRIPTIF],
+                    description=candidat[TEXTES_DESCRIPTIFS[i]],
                     image=candidat[PHOTO]
                 )
                 questions_map[poste].add_option(option)

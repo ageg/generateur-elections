@@ -1,5 +1,5 @@
 import os
-from pandas import read_csv
+from pandas import read_csv, read_excel
 
 
 def validate_dir(dir):
@@ -32,6 +32,7 @@ def validate_question_groups(groups):
     for group in groups:
         validate_input_file(group['file'])
         group['df'] = read_csv(f"input/{group['file']}")
+        # group['df'] = read_excel(f"input/{group['file']}")
         validate_columns(group)
 
 

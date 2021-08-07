@@ -33,7 +33,7 @@ for group in config['groups']:
         questions.append(question)
         sousquestions.extend(sousquestion)
     elif group['type'] == "finissante":
-        group, question = finissante.generate_questions(group)
+        group, question = finissante.generate_questions(config,group)
         groups.extend(group)
         questions.extend(question)
     else:
@@ -58,7 +58,13 @@ if config['type'] == "l'AGEG":
     )
     output_file = "ageg-survey-test.lss"
 elif config['type'] == "la finissante":
-    survey = mytemplate.render(groups=groups, questions=questions, subquestions=None, withAttributes=True)
+    survey = mytemplate.render(
+        survey_options=survey_options,
+        groups=groups,
+        questions=questions,
+        subquestions=None,
+        withAttributes=True
+    )
     output_file = "finissante-survey.lss"
 else:
     print("This should never print")
