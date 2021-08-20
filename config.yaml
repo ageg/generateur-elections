@@ -1,0 +1,193 @@
+---
+#Todo config variables in english, text in french
+# modularize functions
+# parse multiple semesters in one file
+# image name
+
+# survey settings
+admin: "Yves-Alexandre Beebe"
+admin_email: "elections@ageg.ca"
+# format to respect -> year-month-day hour:minute:second
+expiry: "2021-08-04 23:59:59"
+# survey id -> sid?
+
+# survey question groups
+groups:
+  - type: "finissante"
+    file : "Candidatures au conseil exécutif de la promo64 - H22(1-20).xlsx"
+    semester: "H22"
+#  - type: "exec"
+#    file: "exec_a21_2.csv"
+#    semester: "A21"
+#    unused_posts: ["VPDD", "VPAU"]
+#  - type: "exec"
+#    file: "exec_h22.csv"
+#    semester: "H22"
+#  - type: "admin"
+#    file: "admin_a21_2.csv"
+#    semester: "A21"
+#  - type: "admin"
+#    file: "admin_h22.csv"
+#    semester: "H22"
+
+# survey text
+expiry_text: "mercredi le 04 aout 2021 à minuit"
+type: "la finissante"
+semester: "hiver 2022"
+comity: "le comité éxecutif"
+comity_semester: "l'hiver 2022"
+title: "Élection Finissante H22"
+description: "Élections de conf[type] pour conf[comity]"
+welcome_text: >-
+  Bonjour,
+
+
+  C'est par honneur, par sens du devoir et par plaisir que je suis votre directeur d'élections pour les
+  élections des conf[comity] de conf[type] pour l'conf[comity_semester].
+
+
+  Les réponses aux questions sont anonymes et il n'est pas possible de voter plus d'une fois. Nous vous
+  invitons donc à voter selon vos valeurs et vos convictions et non par rapport à la réaction de vos amis
+  ou collègues.
+
+
+  Le vote sera ouvert jusqu'à conf[expiry_text].
+
+
+  Je vous remercie de votre participation et de votre confiance rénouvelée en notre association étudiante,
+
+  <strong>{ADMINNAME}
+
+  Directeurs d'élections, session d'conf[semester]</strong>
+#   L'Association générale étudiante en génie est une association qui défend les droits de ses membres et
+#  offre des services à sa communauté par le biais de personnes représentantes issues de ses membres. Tout
+#  au long de leur mandat, ces représentants seront appelés à se prononcer au nom de votre association et
+#  donc en votre nom. Il est donc important que vous fassiez confiance en ces gens et que vous leur
+#  accordiez votre vote seulement si vous leur faites confiance de bien vous représenter.
+
+empty_end_text: >-
+  Des postes resteront vacants suite à cette élection régulière.
+
+  mako[empty_posts]
+
+  Nous vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.
+
+  Merci d'avoir participé et bonne journée
+filled_end_text: >-
+  Tous les postes seront comblés suite à cette élection régulière. Si vous désirer vous impliquer, nous
+  vous invitons à contacter vos représentant de promo.
+
+
+  Merci d'avoir participé et bonne journée
+#Si vous desirer vous impliquer, nous
+#  vous invitons à venir vous renseigner au local de l'AGEG, C1-2045 de la Faculté de Génie.
+email_invite_subject: "Élections de conf[type] - conf[comity_semester]"
+email_invite_content: >-
+  <p>Bonjour {FIRSTNAME},
+
+
+  Vous êtes par la présente invité(e) à inscrire votre vote pour conf[comity] de conf[type].</p>
+
+  <p>Pour participer, veuillez cliquer sur le lien ci-dessous:
+
+  {SURVEYURL}
+
+
+  Merci de votre temps,
+
+  {ADMINNAME} ({ADMINEMAIL})</p>
+email_reminder_subject: "Rappel pour les élections de conf[type]"
+email_reminder_content: >-
+  <p>Bonjour {FIRSTNAME},
+
+
+  Vous avez été invité(e) à inscrire votre vote pour conf[comity] de conf[type].
+
+
+  Nous avons pris en compte que vous n'avez pas encore complété le questionnaire,
+  et nous vous rappelons que celui-ci est toujours disponible si vous souhaitez participer.
+  Vous avez jusqu'à conf[expiry_text] pour voter.
+
+
+  Pour participer, veuillez cliquer sur le lien ci-dessous:
+
+  {SURVEYURL}</p>
+
+  <p>
+
+  Merci de votre temps,
+
+  {ADMINNAME} ({ADMINEMAIL})</p>
+
+# script settings
+postes_exec:
+  PREZ: "Présidence"
+  VPAL: "Vice-Présidence aux Affaires Légales"
+  VPAI: "Vice-Présidence aux Affaires Internes"
+  VPAF: "Vice-Présidence aux Affaires Financières"
+  VPAP: "Vice-Présidence aux Affaires Pédagogiques"
+  VPAS: "Vice-Présidence aux Affaires Sociales"
+  VPAU: "Vice-Présidence aux Affaires Universitaires"
+  VPAX: "Vice-Présidence aux Activités Extracurriculaires"
+  VPIC: "Vice-Présidence à l'Image et aux Communications"
+  VPDD: "Vice-Présidence au Développement Durable"
+  VPEX: "Vice-Présidence aux Affaires Externes"
+  VPCS: "Vice-Présidence aux Cycles Supérieurs"
+
+postes_finissante:
+    - "Présidence"
+    - "Vice-Présidence"
+    - "Trésorerie"
+    - "Secrétariat"
+    - "Webmestre"
+    - "Direction 5@8"
+    - "Direction Affaires Sociales"
+    - "Direction Bal / Voyage"
+    - "Direction Souvenirs"
+    - "Direction Casino/Jonc"
+    - "Direction Journée Carrière"
+    - "Sous-Direction Bière"
+    - "Sous-Direction Fort"
+    - "Sous-Direction Caisse"
+    - "Sous-Direction Bouffe"
+    - "Sous-Direction Radio"
+    - "Sous-Direction Animation"
+    - "Sous-Direction Sécurité"
+    - "Sous-Direction Photographie"
+
+
+#TMP to cleanup later
+#from collections import namedtuple
+#
+#SurveyConfig = namedtuple("SurveyConfig",
+#                          ["admin", "expiry", "expiry_text", "session", "type", "title", "comity", "comity_session",
+#                           "groups"])
+#GroupConfig = namedtuple("GroupConfig", ["type", "input", "session", "unused_posts"])
+#
+#config = SurveyConfig(
+#    admin="Yves-Alexandre Beebe",
+#    expiry="2021-07-16 23:59:59",  # format to respect -> year-month-day hour:minute:second
+#    expiry_text="vendredi le 16 juillet 2021 à minuit",
+#    type="l'AGEG",
+#    session="été 2021",
+#    title="Élection AGEG E21",
+#    comity="le comité exécutif et le conseil d'administration",
+#    comity_session="automne 2021 et l'hiver 2022",
+#    groups=[GroupConfig("exec", "exec_a21_2.csv", "A21", ["VPAU","VPDD"]),  # deja comble VPEX, VPAX, VPIC, VPAS, VPDD
+#            GroupConfig("exec", "exec_h22.csv", "H22", []),
+#            GroupConfig("admin", "admin_a21_2.csv", "A21", []),
+#            GroupConfig("admin", "admin_h22.csv", "H22", []), ]
+#            # GroupConfig("admin", "admin_annuel.csv", "Annuel", []), ]
+#)
+#
+## config = SurveyConfig(
+##     admin="Yves-Alexandre Beebe",
+##     expiry="2021-04-07 23:59:59",  # format to respect -> year-month-day hour:minute:second
+##     expiry_text="mercredi le 7 avril 2021 à minuit",
+##     type="la finissante",
+##     session="hiver 2021",
+##     title="Élection finissante H21",
+##     comity="le comité exécutif",
+##     comity_session="été 2021",
+##     groups=[GroupConfig("finissante", "finissante_e21.csv", "E21", [])]
+## )

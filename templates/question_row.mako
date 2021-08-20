@@ -10,7 +10,7 @@
         <%include file="question_description.mako" args="title=question.title, options=question.options"/>
     ]]></question>
     <preg/>
-    <help><![CDATA[Pour ce poste, veuillez voter "Oui", "Non", "Non confiance", "Sans réponse" pour chaque candidat.]]></help>
+    <help><![CDATA[${question.help}]]></help>
     <other><![CDATA[N]]></other>
     <mandatory><![CDATA[N]]></mandatory>
     <question_order><![CDATA[${question.order}]]></question_order>

@@ -1,4 +1,5 @@
-FROM python:3.6
-COPY . .
+FROM python:3.9
+COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN python ageg.py
+COPY . .
+RUN python main.py
