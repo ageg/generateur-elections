@@ -12,7 +12,6 @@ class Option:
         self.order = order
         self.code = f"A{order+1}"
 
-
     @staticmethod
     def add_chaise(order):
         return Option(
@@ -23,6 +22,19 @@ class Option:
                 "Elle connait sa place et ne s'exprime pas quand ce n'est pas son tour."
             ),
             image="https://vote.ageg.ca/images/chaise.jpg"
+        )
+
+    @staticmethod
+    def add_salade(order):
+        return Option(
+            nom="La salade de patates",
+            order=order,
+            description=(
+                "La salade de patates est énergique. "
+                "Elle te soutient. "
+                "Elle comble les besoins des membres et elle est toujours bonne en lendemain de veille."
+            ),
+            image="https://vote.ageg.ca/images/salade-de-patate.jpg"
         )
 
 
