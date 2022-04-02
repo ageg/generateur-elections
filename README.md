@@ -1,6 +1,6 @@
 # Générateur d'élections
 
-Ce programme sert à générer des questionnaires pour Limesurvey (format .lss) pour les élections de l'AGEG. Ceci ce fait en lui passant en entrée un classeur avec les candidatures.
+Ce programme sert à générer des questionnaires pour Limesurvey (format .lss) pour les élections de l'AGEG, de promotions et de finissantes. Ceci ce fait en lui passant en entrée un ou des fichiers csv avec les candidatures.
 
 ## Rouler avec Docker
 Savoir plus sur Docker : https://www.docker.com/why-docker

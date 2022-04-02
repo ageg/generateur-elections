@@ -5,7 +5,7 @@ import yaml
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
-from question_groups import admin, executif, finissante
+from question_groups import admin, executif, promo, finissante
 from models.survey import Survey
 
 from config import validate_config, fill_placehoders
@@ -32,6 +32,10 @@ for group in config['groups']:
         groups.append(group)
         questions.append(question)
         sousquestions.extend(sousquestion)
+    elif group['type'] == "promo":
+        group, question = promo.generate_questions(config, group)
+        groups.append(group)
+        questions.extend(question)
     elif group['type'] == "finissante":
         group, question = finissante.generate_questions(config,group)
         groups.extend(group)
@@ -57,6 +61,15 @@ if config['type'] == "l'AGEG":
         withAttributes=False
     )
     output_file = "ageg-survey-test.lss"
+elif config['type'].startswith("la promotion"):
+    survey = mytemplate.render(
+        survey_options=survey_options,
+        groups=groups,
+        questions=questions,
+        subquestions=None,
+        withAttributes=False
+    )
+    output_file = "promo-survey.lss"
 elif config['type'] == "la finissante":
     survey = mytemplate.render(
         survey_options=survey_options,
@@ -67,7 +80,7 @@ elif config['type'] == "la finissante":
     )
     output_file = "finissante-survey.lss"
 else:
-    print("This should never print")
+    print("Config type unknown (This should never print because validation should have catch error before)")
     exit()  # should never happen
 
 
