@@ -41,6 +41,14 @@ file_columns = {
         TEXTE_DESCRIPTIF
     ],
 
+    "promo": [
+        CONCENTRATION,
+        NOM_USUEL,
+        PHOTO,
+        TEXTE_DESCRIPTIF,
+        POSTE_VISE
+    ],
+
     "finissante": [
         CONCENTRATION,
         NOM_USUEL,

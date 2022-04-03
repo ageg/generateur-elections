@@ -23,7 +23,7 @@ def validate_columns(group):
 
 
 def validate_question_groups(groups):
-    if any(group['type'] not in ['exec', 'admin', 'finissante'] for group in groups):
+    if any(group['type'] not in ['exec', 'admin', 'promo', 'finissante'] for group in groups):
         invalid_groups = [group for group in groups if group['type']]
         print(f"Invalid group types present")
         for group in invalid_groups:
@@ -39,6 +39,10 @@ def validate_question_groups(groups):
 def validate_survey_config(conf):
     if conf['type'] == "l'AGEG" and not all(g['type'] == "admin" or g['type'] == "exec" for g in conf['groups']):
         print(f"Elections for l'AGEG must only contain exec or admin question groups, see GroupConfig in config.py")
+        exit()
+
+    if conf['type'].startswith("la promotion") and not all(g['type'] == "promo" for g in conf['groups']):
+        print(f"Elections for la promotion must only contain promo question groups, see GroupConfig in config.py")
         exit()
 
     if conf['type'] == "la finissante" and (

@@ -29,6 +29,9 @@ groups:
 #  - type: "admin"
 #    file: "admin_h22.csv"
 #    semester: "H22"
+#  - type: "promo"
+#    file: "exec-promo-e22.csv"
+#    semester: "E22"
 
 # survey text
 expiry_text: "mercredi le 04 aout 2021 à minuit"
@@ -133,6 +136,20 @@ postes_exec:
   VPDD: "Vice-Présidence au Développement Durable"
   VPEX: "Vice-Présidence aux Affaires Externes"
   VPCS: "Vice-Présidence aux Cycles Supérieurs"
+
+postes_promo:
+  PREZ: "Présidence"
+  VP: "Vice-Présidence"
+  TREZ: "Trésorerie"
+  SEC: "Secrétariat"
+  REPCHI: "Représentant Chimique"
+  REPBIO: "Représentant Biotechnologique"
+  REPCIV: "Représentant Civil"
+  REPBAT: "Représentant Bâtiment"
+  REPELE: "Représentant Électrique"
+  REPINF: "Représentant Informatique"
+  REPMEC: "Représentant Mécanique"
+  REPROB: "Représentant Robotique"
 
 postes_finissante:
     - "Présidence"
