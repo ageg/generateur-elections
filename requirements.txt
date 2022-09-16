@@ -1,4 +1,4 @@
-Mako==1.1.4
+Mako==1.2.2
 pandas==1.2.3
 
 PyYAML~=5.4.1
