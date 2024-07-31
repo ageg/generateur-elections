@@ -37,6 +37,21 @@ class Option:
             image="https://vote.ageg.ca/images/salade-de-patate.jpg"
         )
 
+    @staticmethod
+    def add_pilon(order):
+        return Option(
+            nom="Le pilon de poulet",
+            order=order,
+            description=(
+                "Tel un porteur du bandana, le pilon de dinde ne manque jamais l'Oktoberfest. "
+                "Il est fort et sais comment soutenir les membres. "
+                "Avec sa haute teneur en protéines, il aura toujours l'énergie nécessaire pour mener à bien les projets. "
+                "Plein de surprises, il connait sa place et ne s'exprime pas quand ce n'est pas son tour. "
+                "Le pilon de dinde de l'Oktoberfest est l'option de choix afin de laisser un poste inoccupé."
+                ""
+            ),
+            image="https://vote.ageg.ca/images/pilon-poulet.jpg"
+        )
 
     def __repr__(self):
         return f"<Candidat name={self.value} concentration={self.code}>"
