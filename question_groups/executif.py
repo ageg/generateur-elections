@@ -56,7 +56,7 @@ def generate_questions(conf, group_conf):
         questions_map[poste].add_option(option)
 
     for poste in questions_map:
-        lachaise = Option.add_chaise(questions_map[poste].answer_count())
+        lachaise = Option.add_pilon(questions_map[poste].answer_count())
         questions_map[poste].add_answer(lachaise)
         questions_map[poste].add_option(lachaise)
 
