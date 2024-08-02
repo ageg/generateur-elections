@@ -40,7 +40,7 @@ class Option:
     @staticmethod
     def add_pilon(order):
         return Option(
-            nom="Le pilon de poulet",
+            nom="Le pilon de dinde",
             order=order,
             description=(
                 "Tel un porteur du bandana, le pilon de dinde ne manque jamais l'Oktoberfest. "
